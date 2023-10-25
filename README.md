@@ -15,6 +15,9 @@ O projeto para um Sistema de Locadora Online de Filmes, Músicas e Mídias "Midi
 ![Python](https://img.shields.io/badge/Python-000?style=for-the-badge&logo=python)
 ![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/pacote)
 
+**Front-end:** TailwindCSS
+
+**Back-end:** Django
 
 ## Documentação da API
 
@@ -38,7 +41,22 @@ O projeto para um Sistema de Locadora Online de Filmes, Músicas e Mídias "Midi
 | :---------- | :--------- | :------------------------------------------ |
 | `id`      | `string` | **Obrigatório**. O ID do item que você quer |
 
-#### add(num1, num2)
+#### Padrões de Commit
 
-Recebe dois números e retorna a sua soma.
+| Tipo       | Descrição                                                 |
+|------------|----------------------------------------------------------|
+| [FEAT]     | Quando um novo recurso foi desenvolvido                  |
+| [FIX]      | Quando um recurso/bug foi corrigido                      |
+| [UPDATE]   | Quando arquivos estáticos foram renomeados, removidos, movidos de um diretório para outro, adicionados ou substituídos |
+| [REFACTOR] | Quando uma alteração de código que não corrige um bug nem adiciona um recurso |
+| [DOCS]     | Somente alterações na documentação                        |
 
+
+
+## Instalação
+
+Instale midiaMania com pip
+
+```bash
+  pip3 install
+```

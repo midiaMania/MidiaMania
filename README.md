@@ -52,6 +52,9 @@ O projeto para um Sistema de Locadora Online de Filmes, Músicas e Mídias "Midi
 | [DOCS]     | Somente alterações na documentação                        |
 
 
+![git_Branchnaming](https://miro.medium.com/v2/resize:fit:720/format:webp/1*GpWwKA_FRh3o-3pWNJ767Q.png)
+
+
 
 ## Instalação
 

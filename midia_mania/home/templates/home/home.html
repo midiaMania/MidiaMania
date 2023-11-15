@@ -1,0 +1,207 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora Midia Mania</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+        body {
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        
+        .search-bar button {
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .search-bar button:hover {
+            color: blue;
+            border-color: blue;
+        }
+
+        .sidebar {
+            background-color: black;
+            color: white;
+            position: fixed;
+            height: 100%;
+            width: 250px;
+            overflow: auto;
+            padding-top: 20px;
+            padding-left: 30px;
+            left: -100%;
+            transition: left 0.1s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            border: 1px solid white; 
+            margin: 5px 0;
+            margin-top: 10%;
+            width: 80%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sidebar a:hover {
+            color: blue; 
+            border-color: blue; 
+        }
+
+        .sidebar-close-arrow {
+            cursor: pointer;
+            color: white;
+            width: 50%;
+        }
+
+        .sidebar-close-arrow:hover {
+            color: blue;
+        }
+
+        .category{
+            background-color: black;
+            color: white;
+            margin-left: 55px;
+            font-size: 26px;
+            text-decoration: none;
+        }
+
+        .category:hover {
+            color: blue; 
+            border-color: blue; 
+        }
+
+        .logo {
+            margin: 0 auto;
+            display: block;
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 50px;
+            padding-left: 30px;
+        }
+
+        .images img {
+            width: 12%;
+            height: auto;
+        }
+
+        .toggle-btn{
+            width: 100px;
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toggle-btn:hover {
+            color: blue; 
+            border-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-close-arrow" onclick="toggleSidebar()">&larr; Fechar</div>
+        <a href="">Inicio</a>
+        <a href="#movies">Filmes</a>
+        <a href="#games">Jogos</a>
+        <a href="#music">Músicas</a>
+    </div>
+    <button class="toggle-btn" onclick="toggleSidebar()">Menu</button>
+    <div>
+        <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
+    </div>
+        <div class="search-bar">
+        <input type="text" placeholder="Pesquisar...">
+        <button type="button">Buscar</button>
+    </div>
+
+    <a class="category" href="#">Filmes</a>
+    <div class="images">
+        <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+        <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+        <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+        <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+        <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+        <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+        <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+    </div>
+    <a class="category" href="#">Jogos</a>
+    <div class="images">
+        <img src="{% static 'games/images/1.jpeg' %}" alt="Image 1">
+        <img src="{% static 'games/images/2.jpg' %}" alt="Image 2">
+        <img src="{% static 'games/images/3.jpg' %}" alt="Image 3">
+        <img src="{% static 'games/images/4.jpg' %}" alt="Image 4">
+        <img src="{% static 'games/images/5.jpg' %}" alt="Image 5">
+        <img src="{% static 'games/images/6.jpg' %}" alt="Image 6">
+        <img src="{% static 'games/images/2.jpg' %}" alt="Image 2">
+    </div>
+    <a class="category" href="#">Músicas</a>
+    <div class="images">
+        <img src="{% static 'musics/images/1.jpg' %}" alt="Image 1">
+        <img src="{% static 'musics/images/2.jpg' %}" alt="Image 2">
+        <img src="{% static 'musics/images/3.jpg' %}" alt="Image 3">
+        <img src="{% static 'musics/images/4.jpg' %}" alt="Image 4">
+        <img src="{% static 'musics/images/5.jpg' %}" alt="Image 5">
+        <img src="{% static 'musics/images/4.jpg' %}" alt="Image 4">
+        <img src="{% static 'musics/images/5.jpg' %}" alt="Image 5">
+    </div>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('open');
+        }
+        document.body.addEventListener('click', function (event) {
+            var sidebar = document.querySelector('.sidebar');
+            var isOpen = sidebar.classList.contains('open');
+    
+            if (!event.target.closest('.toggle-btn') && !event.target.closest('.sidebar') && isOpen) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>

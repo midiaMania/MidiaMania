@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locadora Midia Mania</title>
+    <link rel="icon" href="{% static 'logo.ico' %}" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 
@@ -145,10 +146,10 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-close-arrow" onclick="toggleSidebar()">&larr; Fechar</div>
-        <a href="">Inicio</a>
-        <a href="#movies">Filmes</a>
-        <a href="#games">Jogos</a>
-        <a href="#music">Músicas</a>
+        <a href="{% url 'home' %}">Inicio</a>
+        <a href="{% url 'movies_by_category' %}">Filmes</a>
+        <a href="{% url 'games_by_category' %}">Jogos</a>
+        <a href="{% url 'musics_by_category' %}">Músicas</a>
     </div>
     <button class="toggle-btn" onclick="toggleSidebar()">Menu</button>
     <div>
@@ -159,7 +160,7 @@
         <button type="button">Buscar</button>
     </div>
 
-    <a class="category" href="#">Filmes</a>
+    <a class="category" href="{% url 'movies_by_category' %}">Filmes</a>
     <div class="images">
         <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
         <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
@@ -169,7 +170,7 @@
         <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
         <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
     </div>
-    <a class="category" href="#">Jogos</a>
+    <a class="category" href="{% url 'games_by_category' %}">Jogos</a>
     <div class="images">
         <img src="{% static 'games/images/1.jpeg' %}" alt="Image 1">
         <img src="{% static 'games/images/2.jpg' %}" alt="Image 2">
@@ -179,7 +180,7 @@
         <img src="{% static 'games/images/6.jpg' %}" alt="Image 6">
         <img src="{% static 'games/images/2.jpg' %}" alt="Image 2">
     </div>
-    <a class="category" href="#">Músicas</a>
+    <a class="category" href="{% url 'musics_by_category' %}">Músicas</a>
     <div class="images">
         <img src="{% static 'musics/images/1.jpg' %}" alt="Image 1">
         <img src="{% static 'musics/images/2.jpg' %}" alt="Image 2">

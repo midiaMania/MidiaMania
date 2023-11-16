@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'musics.apps.MusicsConfig',
+    'games.apps.GamesConfig',
+    'movies.apps.MoviesConfig',
     'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',

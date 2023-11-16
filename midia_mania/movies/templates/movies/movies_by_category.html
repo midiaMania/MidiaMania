@@ -1,0 +1,346 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora Midia Mania</title>
+    <link rel="icon" href="{% static 'logo.ico' %}" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+        .title_pag {
+            background-color: black;
+            color: blue;
+            font-size: 70px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        body {
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            position: relative;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin-top: 2%;
+            margin-bottom: 5%;
+        }
+        
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid white;
+            border-radius: 5px;
+        }
+        
+        .search-bar button {
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            border: 1px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .search-bar button:hover {
+            color: blue;
+            border-color: blue;
+        }
+
+        .sidebar {
+            background-color: black;
+            color: white;
+            position: fixed;
+            height: 100%;
+            width: 250px;
+            overflow: auto;
+            padding-top: 20px;
+            padding-left: 30px;
+            left: -100%;
+            transition: left 0.1s ease;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            border: 1px solid white; 
+            margin: 5px 0;
+            margin-top: 10%;
+            width: 80%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sidebar a:hover {
+            color: blue; 
+            border-color: blue; 
+        }
+
+        .sidebar-close-arrow {
+            cursor: pointer;
+            color: white;
+            width: 50%;
+        }
+
+        .sidebar-close-arrow:hover {
+            color: blue;
+        }
+
+        .category{
+            background-color: black;
+            color: white;
+            margin-left: 55px;
+            font-size: 26px;
+            text-decoration: none;
+        }
+
+        .category:hover {
+            color: blue; 
+            border-color: blue; 
+        }
+
+        .images {
+            white-space: nowrap;
+            overflow-x: hidden;
+            padding: 10px 20px 50px 30px;
+            flex-grow: 1;
+        }
+        
+        .images img {
+            display: inline-block;
+            width: 175px; 
+            height: 250px;
+            object-position: center;
+            margin-right: 20px;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttonRolagem {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            display: inline-block;
+            margin: 0px; 
+            cursor: pointer;
+            background-color: transparent;
+        }
+        
+
+        #buttonLeft {
+            left: 0;
+            border-width: 70px 50px 70px 0;
+            border-color: transparent rgba(128, 128, 128, 0.4) transparent transparent;
+        }
+        
+        #buttonRight {
+            right: 0;
+            border-width: 70px 0 70px 50px;
+            border-color: transparent transparent transparent rgba(128, 128, 128, 0.4);
+        }
+
+        #buttonLeft:hover {
+            border-color: transparent rgba(30, 144, 255, 0.6) transparent transparent;
+        }
+        
+        #buttonRight:hover {
+            border-color: transparent transparent transparent rgba(30, 144, 255, 0.6); 
+        }
+
+
+        .toggle-btn{
+            width: 100px;
+            font-family: 'Kdam Thmor Pro', sans-serif;
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toggle-btn:hover {
+            color: blue; 
+            border-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-close-arrow" onclick="toggleSidebar()">&larr; Fechar</div>
+        <a href="{% url 'home' %}">Inicio</a>
+        <a href="{% url 'movies_by_category' %}">Filmes</a>
+        <a href="{% url 'games_by_category' %}">Jogos</a>
+        <a href="{% url 'musics_by_category' %}">Músicas</a>
+    </div>
+    <button class="toggle-btn" onclick="toggleSidebar()">Menu</button>
+
+    <div class="title_pag"> Filmes </div> 
+
+    <div class="search-bar">
+        <input type="text" placeholder="Pesquisar...">
+        <button type="button">Buscar</button>
+    </div>
+
+    <a class="category" href="#">Ação</a>
+    <div class="container">
+        <button class='buttonRolagem'id='buttonLeft' onclick="scroll_Left('imageContainer1')"></button>
+        <div class="images" id='imageContainer1'>
+            <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+            <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
+        </div>
+        <button class='buttonRolagem'id = 'buttonRight' onclick="scroll_Right('imageContainer1')"></button>
+    </div>
+
+    <a class="category" href="#">Fantasia</a>
+    <div class="container">
+        <button class='buttonRolagem'id='buttonLeft' onclick="scroll_Left('imageContainer2')"></button>
+        <div class="images" id='imageContainer2'>
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+            <img src="{% static 'movies/images/6.jpg' %}" alt="Image 6">
+        </div>
+        <button class='buttonRolagem'id = 'buttonRight' onclick="scroll_Right('imageContainer2')"></button>
+    </div>
+    
+    <a class="category" href="#">Drama</a>
+    <div class="container">
+        <button class='buttonRolagem'id='buttonLeft' onclick="scroll_Left('imageContainer3')"></button>
+        <div class="images" id='imageContainer3'>
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+            <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
+            <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
+        </div>
+        <button class='buttonRolagem'id = 'buttonRight' onclick="scroll_Right('imageContainer3')"></button>
+    </div>
+
+    <a class="category" href="#">Super Héroi</a>
+    <div class="container">
+        <button class='buttonRolagem'id='buttonLeft' onclick="scroll_Left('imageContainer4')"></button>
+        <div class="images" id='imageContainer4'>
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+            <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
+            <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
+        </div>
+        <button class='buttonRolagem'id = 'buttonRight' onclick="scroll_Right('imageContainer4')"></button>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('open');
+        };
+
+        document.body.addEventListener('click', function (event) {
+            var sidebar = document.querySelector('.sidebar');
+            var isOpen = sidebar.classList.contains('open');
+    
+            if (!event.target.closest('.toggle-btn') && !event.target.closest('.sidebar') && isOpen) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        function scrollToSmooth(container, position) {
+            var start = container.scrollLeft;
+            var startTime = performance.now();
+        
+            function animate(currentTime) {
+                var elapsedTime = currentTime - startTime;
+        
+                container.scrollLeft = easeInOut(elapsedTime, start, position - start, 500);
+        
+                if (elapsedTime < 500) {
+                    requestAnimationFrame(animate);
+                }
+            }
+        
+            requestAnimationFrame(animate);
+        }
+        
+        function scroll_Left(containerId) {
+            var container = document.getElementById(containerId);
+            scrollToSmooth(container, container.scrollLeft - 1000);
+        }
+        
+        function scroll_Right(containerId) {
+            var container = document.getElementById(containerId);
+            scrollToSmooth(container, container.scrollLeft + 1000);
+        }
+        
+        function easeInOut(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        };
+
+    </script>
+
+</body>
+</html>

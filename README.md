@@ -1,23 +1,64 @@
-
 # Midia Mania Project
 
-
-
-
 ## 🚀 Sobre o Projeto
+
 O projeto para um Sistema de Locadora Online de Filmes, Músicas e Mídias "MidiaMania" é uma aplicação web desenvolvida em Django, que tem como objetivo criar uma plataforma de locação e streaming de conteúdo multimídia. Esta iniciativa foi elaborada por estudantes de Engenharia da Computação da Universidade Federal do Vale do São Francisco como parte do currículo da disciplina de Sistemas Distribuídos.
-
-
-
 
 ## 🛠 Linguagens e Frameworks
 
 ![Python](https://img.shields.io/badge/Python-000?style=for-the-badge&logo=python)
 ![PyPI - Versions from Framework Classifiers](https://img.shields.io/pypi/frameworkversions/django/pacote)
 
-**Front-end:** TailwindCSS
+**Front-end:** TailwindCSS, NES.css
 
 **Back-end:** Django
+
+## Requisitos
+
+- Python
+- Nodejs
+
+## Ambiente Virtual
+
+### Criar Ambiente
+
+```sh
+python -m venv venv
+```
+
+### Ativar Ambiente
+
+#### Windows
+
+```cmd
+.\venv\Scripts\activate
+```
+
+#### Linux/Mac
+
+```sh
+source venv/bin/activate
+```
+
+## Instalação
+
+```sh
+pip install -r requirements.txt
+```
+
+## Executar o projeto
+
+### Bash/CMD
+
+```sh
+python manage.py tailwind start & python manage.py runserver
+```
+
+### Windows PowerShell
+
+```sh
+python manage.py tailwind start ; python manage.py runserver
+```
 
 ## Documentação da API
 
@@ -53,13 +94,3 @@ O projeto para um Sistema de Locadora Online de Filmes, Músicas e Mídias "Midi
 
 
 ![git_Branchnaming](https://miro.medium.com/v2/resize:fit:720/format:webp/1*GpWwKA_FRh3o-3pWNJ767Q.png)
-
-
-
-## Instalação
-
-Instale midiaMania com pip
-
-```bash
-  pip3 install
-```

@@ -1,0 +1,12 @@
+@import url("../node_modules/nes.css/css/nes.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html, body, pre, code, kbd, samp {
+        font-family: "Press Start 2P", system-ui, sans-serif;
+        font-size: 14px;
+    }
+}

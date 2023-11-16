@@ -1,10 +1,10 @@
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locadora Midia Mania</title>
-    <link rel="icon" href="{% static 'logo.ico' %}" type="image/x-icon">
+{% extends 'base.html' %}
+
+{% block title %}Página inicial{% endblock %}
+
+{% block content %}
+
+    {% load static %}
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 
@@ -142,8 +142,6 @@
         }
 
     </style>
-</head>
-<body>
     <div class="sidebar">
         <div class="sidebar-close-arrow" onclick="toggleSidebar()">&larr; Fechar</div>
         <a href="{% url 'home' %}">Inicio</a>
@@ -204,5 +202,4 @@
             }
         });
     </script>
-</body>
-</html>
+{% endblock %}

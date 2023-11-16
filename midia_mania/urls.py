@@ -27,4 +27,5 @@ urlpatterns = [
     path("movies/", include("movies.urls")),
     path("games/", include("games.urls")),
     path("musics/", include("musics.urls")),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]

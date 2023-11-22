@@ -9,4 +9,18 @@
         font-family: "Press Start 2P", system-ui, sans-serif;
         font-size: 14px;
     }
+
+    body::after {
+        content: "";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/static/background.jpg') rgb(0,0,0) repeat;
+        background-size: 10%;
+        opacity: 0.5;
+        z-index: -1;
+    }
 }

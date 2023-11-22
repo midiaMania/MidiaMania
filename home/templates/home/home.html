@@ -5,201 +5,104 @@
 {% block content %}
 
     {% load static %}
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 
-        body {
-            font-family: 'Kdam Thmor Pro', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-        }
+    <section class="py-4">
+        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'movies_by_category' %}">
+            <img class="w-10" src="{% static 'gifs/coin-spin.gif' %}" alt="Moeda"/>
+            <span class="mt-3">Filmes</span>
+        </a>
+        <div class="relative">
+            <div id="movies-carousel" class="flex items-stretch overflow-hidden">
+                <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
+                    <button onclick="scrollToLeft('movies-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
+                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
+                    </button>
+                </div>
 
-        .search-bar {
-            text-align: center;
-            margin-top: 5%;
-            margin-bottom: 5%;
-        }
-        
-        .search-bar input {
-            padding: 10px;
-            width: 60%;
-            border: 1px solid white;
-            border-radius: 5px;
-        }
-        
-        .search-bar button {
-            font-family: 'Kdam Thmor Pro', sans-serif;
-            background-color: black;
-            color: white;
-            padding: 10px 15px;
-            border: 1px solid white;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        
-        .search-bar button:hover {
-            color: blue;
-            border-color: blue;
-        }
+                <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
+                    <button onclick="scrollToRight('movies-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
+                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
+                    </button>
+                </div>
 
-        .sidebar {
-            background-color: black;
-            color: white;
-            position: fixed;
-            height: 100%;
-            width: 250px;
-            overflow: auto;
-            padding-top: 20px;
-            padding-left: 30px;
-            left: -100%;
-            transition: left 0.1s ease;
-            display: flex;
-            flex-direction: column;
-        }
+                {% for movie in movies %}
+                    <div class="nes-container is-rounded is-dark text-center flex flex-col">
+                        <p class="mb-1 flex-1 flex items-center justify-center">{{ movie.name }}</p>
+                        <div class="flex flex-col items-stretch w-64 h-80">
+                            <img class="w-full h-full" src="{% static movie.img %}" alt="Image 1"/>
+                        </div>
+                        <p class="text-xl my-1">R$ {{ movie.price }}</p>
+                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-        .sidebar.open {
-            left: 0;
-        }
+    <section class="py-4">
+        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
+            <img class="w-10" src="{% static 'gifs/mario-spin.gif' %}" alt="Mario"/>
+            <span class="mt-1">Jogos</span>
+        </a>
+        <div class="relative">
+            <div id="games-carousel" class="flex items-stretch overflow-hidden">
+                <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
+                    <button onclick="scrollToLeft('games-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
+                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
+                    </button>
+                </div>
 
-        .sidebar a {
-            text-decoration: none;
-            color: white;
-            border: 1px solid white; 
-            margin: 5px 0;
-            margin-top: 10%;
-            width: 80%; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+                <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
+                    <button onclick="scrollToRight('games-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
+                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
+                    </button>
+                </div>
 
-        .sidebar a:hover {
-            color: blue; 
-            border-color: blue; 
-        }
+                {% for game in games %}
+                    <div class="nes-container is-rounded is-dark text-center flex flex-col">
+                        <p class="mb-1 flex-1 flex items-center justify-center">{{ game.name }}</p>
+                        <div class="flex flex-col items-stretch w-64 h-80">
+                            <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
+                        </div>
+                        <p class="text-xl my-1">R$ {{ game.price }}</p>
+                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-        .sidebar-close-arrow {
-            cursor: pointer;
-            color: white;
-            width: 50%;
-        }
+    <section class="py-4">
+        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'musics_by_category' %}">
+            <img class="w-10" src="{% static 'gifs/heart-spin.gif' %}" alt="Coração"/>
+            <span class="mt-1">Músicas</span>
+        </a>
+        <div class="relative">
+            <div id="musics-carousel" class="flex items-stretch overflow-hidden">
+                <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
+                    <button onclick="scrollToLeft('musics-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
+                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
+                    </button>
+                </div>
 
-        .sidebar-close-arrow:hover {
-            color: blue;
-        }
+                <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
+                    <button onclick="scrollToRight('musics-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
+                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
+                    </button>
+                </div>
 
-        .category{
-            background-color: black;
-            color: white;
-            margin-left: 55px;
-            font-size: 26px;
-            text-decoration: none;
-        }
+                {% for music in musics %}
+                    <div class="nes-container is-rounded is-dark text-center flex flex-col">
+                        <p class="mb-1 flex-1 flex items-center justify-center">{{ music.name }}</p>
+                        <div class="flex flex-col items-stretch w-64 h-80">
+                            <img class="w-full h-full" src="{% static music.img %}" alt="Image 1"/>
+                        </div>
+                        <p class="text-xl my-1">R$ {{ music.price }}</p>
+                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-        .category:hover {
-            color: blue; 
-            border-color: blue; 
-        }
-
-        .logo {
-            margin: 0 auto;
-            display: block;
-        }
-
-        .images {
-            display: flex;
-            justify-content: space-around;
-            padding-top: 10px;
-            padding-right: 20px;
-            padding-bottom: 50px;
-            padding-left: 30px;
-        }
-
-        .images img {
-            width: 12%;
-            height: auto;
-        }
-
-        .toggle-btn{
-            width: 100px;
-            font-family: 'Kdam Thmor Pro', sans-serif;
-            background-color: black;
-            color: white;
-            border: 2px solid white;
-            padding-top: 10px;
-            padding-right: 10px;
-            padding-bottom: 10px;
-            padding-left: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .toggle-btn:hover {
-            color: blue; 
-            border-color: blue;
-        }
-
-    </style>
-    <div class="sidebar">
-        <div class="sidebar-close-arrow" onclick="toggleSidebar()">&larr; Fechar</div>
-        <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'movies_by_category' %}">Filmes</a>
-        <a href="{% url 'games_by_category' %}">Jogos</a>
-        <a href="{% url 'musics_by_category' %}">Músicas</a>
-    </div>
-    <button class="toggle-btn" onclick="toggleSidebar()">Menu</button>
-    <div>
-        <img src="{% static 'logo.png' %}" alt="Logo" class="logo">
-    </div>
-        <div class="search-bar">
-        <input type="text" placeholder="Pesquisar...">
-        <button type="button">Buscar</button>
-    </div>
-
-    <a class="category" href="{% url 'movies_by_category' %}">Filmes</a>
-    <div class="images">
-        <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
-        <img src="{% static 'movies/images/2.jpg' %}" alt="Image 2">
-        <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
-        <img src="{% static 'movies/images/4.jpg' %}" alt="Image 4">
-        <img src="{% static 'movies/images/5.jpg' %}" alt="Image 5">
-        <img src="{% static 'movies/images/1.jpg' %}" alt="Image 1">
-        <img src="{% static 'movies/images/3.png' %}" alt="Image 3">
-    </div>
-    <a class="category" href="{% url 'games_by_category' %}">Jogos</a>
-    <div class="images">
-        <img src="{% static 'games/images/1.jpeg' %}" alt="Image 1">
-        <img src="{% static 'games/images/2.jpg' %}" alt="Image 2">
-        <img src="{% static 'games/images/3.jpg' %}" alt="Image 3">
-        <img src="{% static 'games/images/4.jpg' %}" alt="Image 4">
-        <img src="{% static 'games/images/5.jpg' %}" alt="Image 5">
-        <img src="{% static 'games/images/6.jpg' %}" alt="Image 6">
-        <img src="{% static 'games/images/2.jpg' %}" alt="Image 2">
-    </div>
-    <a class="category" href="{% url 'musics_by_category' %}">Músicas</a>
-    <div class="images">
-        <img src="{% static 'musics/images/1.jpg' %}" alt="Image 1">
-        <img src="{% static 'musics/images/2.jpg' %}" alt="Image 2">
-        <img src="{% static 'musics/images/3.jpg' %}" alt="Image 3">
-        <img src="{% static 'musics/images/4.jpg' %}" alt="Image 4">
-        <img src="{% static 'musics/images/5.jpg' %}" alt="Image 5">
-        <img src="{% static 'musics/images/4.jpg' %}" alt="Image 4">
-        <img src="{% static 'musics/images/5.jpg' %}" alt="Image 5">
-    </div>
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('open');
-        }
-        document.body.addEventListener('click', function (event) {
-            var sidebar = document.querySelector('.sidebar');
-            var isOpen = sidebar.classList.contains('open');
-    
-            if (!event.target.closest('.toggle-btn') && !event.target.closest('.sidebar') && isOpen) {
-                sidebar.classList.remove('open');
-            }
-        });
-    </script>
 {% endblock %}

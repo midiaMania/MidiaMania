@@ -8,19 +8,18 @@
     <section class="flex flex-col items-center md:flex-row md:items-start py-7 gap-10">
         <div class="relative w-96">
             <img class="w-96" src="{% static img %}" alt="Capa"/>
-            <img class="w-14 absolute top-0" src="{% static 'gifs/spider-man.gif' %}" alt="Spider-man"/>
-            <img class="w-14 absolute right-0 bottom-0" src="{% static 'gifs/toad.gif' %}" alt="Sapo"/>
+            <img class="w-14 absolute bottom-0" src="{% static 'gifs/game-over.gif' %}" alt="Game over"/>
         </div>
 
         <div class="flex-1">
-            <div class="flex items-center">
-                <img class="w-14" src="{% static 'gifs/glass.gif' %}" alt="Glass"/>
+            <div class="flex items-center gap-2">
+                <img class="w-7" src="{% static 'gifs/pacman.gif' %}" alt="Pacman"/>
                 <h1 class="text-2xl">{{ title }}</h1>
             </div>
 
-            <div class="flex flex-col gap-2">
-                <p>Sinopse</p>
-                <p class="text-sm text-justify">{{ synopsis }}</p>
+            <div class="flex flex-col gap-2 mt-4">
+                <p>Sobre o Jogo</p>
+                <p class="text-sm text-justify">{{ about }}</p>
                 <div class="flex gap-4 mt-2">
                     {% for categorie in categories %}
                         <a href="#" class="nes-badge">
@@ -45,22 +44,23 @@
 
             <span class="flex gap-4 mt-2 items-center">
                 <button class="nes-btn is-primary mt-4 py-3 px-10">Comprar</button>
-                <img class="w-20 h-[45px] mt-2" src="{% static 'gifs/yoda.gif' %}" alt="yoda"/>
+                <img class="w-14 mt-2" src="{% static 'gifs/mario.gif' %}" alt="Mario"/>
             </span>
         </div>
     </section>
 
     <section class="pb-7">
-        <div class="flex gap-1 items-center">
-            <img class="w-7" src="{% static 'gifs/popcorn.gif' %}" alt="Popcorn"/>
+        <div class="flex items-center">
+            <img class="w-10" src="{% static 'gifs/space-invaders-white.gif' %}" alt="Space invaders"/>
             <p class="text-xl">Descrição</p>
         </div>
 
         <div class="flex flex-col gap-2 mt-4 text-md">
             <p>Título: {{ title }}</p>
-            <p>Direção: {{ directors }}</p>
+            <p>Plataforma: {{ platform }}</p>
+            <p>Desenvolvedor: {{ developer }}</p>
+            <p>Distribuidora: {{ publisher }}</p>
             <p>Lançamento: {{ release_date }}</p>
-            <p>Duração: {{ running_time }} minutos</p>
             <p class="flex flex-col gap-2">
                 <span>
                     Classificação: 

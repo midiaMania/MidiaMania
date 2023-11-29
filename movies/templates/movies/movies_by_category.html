@@ -3,6 +3,7 @@
 {% block title %}Filmes{% endblock %}
 
 {% block movies_menu %}text-red-600/90{% endblock %}
+{% block movies_selected %}<i class="nes-icon is-small star"></i>{% endblock %}
 
 {% block content %}
 
@@ -34,7 +35,7 @@
                             <img class="w-full h-full" src="{% static movie.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ movie.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'movie_details' movie.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>
@@ -67,7 +68,7 @@
                             <img class="w-full h-full" src="{% static movie.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ movie.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'movie_details' movie.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>
@@ -100,7 +101,7 @@
                             <img class="w-full h-full" src="{% static movie.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ movie.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'movie_details' movie.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>

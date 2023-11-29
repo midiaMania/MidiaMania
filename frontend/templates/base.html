@@ -16,36 +16,36 @@
 
 		<header class="flex flex-col gap-4">
 			<div class="container mx-auto">
-				<div class="flex justify-between p-7">
+				<div class="flex justify-between items-center p-7">
 					<button id="menuBtn" class="nes-btn bg-gray-300 w-14 h-14"><img src="{% static 'icons/menu.svg' %}" alt="Menu"/></button>
 					<a href="{% url 'home' %}">
-						<img src="{% static 'logo.svg' %}" alt="Logo"/>
+						<img class="w-80 md:w-96 lg:w-[40rem]" src="{% static 'logo.svg' %}" alt="Logo"/>
 					</a>
 					<button class="nes-btn bg-gray-300 w-14 h-14"><img src="{% static 'icons/cart.svg' %}" alt="Carrinho"/></button>
 				</div>
-				<div class="nes-field is-inline px-2 w-full md:w-1/2 mx-auto">
+				<div class="nes-field is-inline w-full md:w-2/3 lg:w-1/2 mx-auto">
 					<input type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Pesquisar...">
 					<button class="nes-btn is-primary"><img src="{% static 'icons/search.svg' %}" alt="Pesquisar"/></button>
 				</div>
 			</div>
-			<nav id="menu" class="flex justify-center gap-20 bg-amber-400 text-black py-2 relative">
+			<nav id="menu" class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative">
 				<img class="absolute top-[-2.5rem] left-[20%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
-				<a class="hover:text-gray-500 {% block movies_menu %}{% endblock %}" href="{% url 'movies_by_category' %}">Filmes</a>
+				<a class="hover:text-gray-500 {% block movies_menu %}{% endblock %}" href="{% url 'movies_by_category' %}">{% block movies_selected %}{% endblock %}Filmes</a>
 				<span>|</span>
-				<a class="hover:text-gray-500 {% block games_menu %}{% endblock %}" href="{% url 'games_by_category' %}">Jogos</a>
+				<a class="hover:text-gray-500 {% block games_menu %}{% endblock %}" href="{% url 'games_by_category' %}">{% block games_selected %}{% endblock %}Jogos</a>
 				<span>|</span>
-				<a class="hover:text-gray-500 {% block musics_menu %}{% endblock %}" href="{% url 'musics_by_category' %}">Músicas</a>
+				<a class="hover:text-gray-500 {% block musics_menu %}{% endblock %}" href="{% url 'musics_by_category' %}">{% block musics_selected %}{% endblock %}Músicas</a>
 			</nav>
 		</header>
 
-		<main class="container mx-auto">
+		<main class="container mx-auto py-2">
 			{% block content %}
         	{% endblock %}
 		</main>
 
-		<footer class="flex justify-center items-center gap-2">
-			<span>© Copyright 2023</span>
-			<span><img src="{% static 'gifs/space-invaders-green.gif' %}" alt="Space invaders"></span>
+		<footer class="flex justify-center items-center gap-2 p-4">
+			<span class="text-md">© Copyright 2023</span>
+			<span class="w-7"><img src="{% static 'gifs/space-invaders-green.gif' %}" alt="Space invaders"></span>
 		</footer>
 
 		<script src="{% static 'js/main.js' %}"></script>

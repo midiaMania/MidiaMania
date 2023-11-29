@@ -3,15 +3,16 @@
 {% block title %}Músicas{% endblock %}
 
 {% block musics_menu %}text-red-600/90{% endblock %}
+{% block musics_selected %}<i class="nes-icon is-small star"></i>{% endblock %}
 
 {% block content %}
 
     {% load static %}
 
     <section class="py-4">
-        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'musics_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/music.gif' %}" alt="Music"/>
-            <span class="mt-1">POP</span>
+        <a class="flex items-center w-fit hover:text-amber-300 pb-2" href="{% url 'musics_by_category' %}">
+            <img class="w-7" src="{% static 'gifs/sound.gif' %}" alt="Music"/>
+            <span class="mt-1 ml-2">POP</span>
         </a>
         <div class="relative">
             <div id="pop-carousel" class="flex items-stretch overflow-hidden">
@@ -34,7 +35,7 @@
                             <img class="w-full h-full" src="{% static music.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ music.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'music_details' music.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>
@@ -42,9 +43,9 @@
     </section>
 
     <section class="py-4">
-        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'musics_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/music.gif' %}" alt="Music"/>
-            <span class="mt-1">Rock</span>
+        <a class="flex items-center w-fit hover:text-amber-300 pb-2" href="{% url 'musics_by_category' %}">
+            <img class="w-7" src="{% static 'gifs/sound.gif' %}" alt="Music"/>
+            <span class="mt-1 ml-2">Rock</span>
         </a>
         <div class="relative">
             <div id="rock-carousel" class="flex items-stretch overflow-hidden">
@@ -67,7 +68,7 @@
                             <img class="w-full h-full" src="{% static music.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ music.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'music_details' music.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>
@@ -75,9 +76,9 @@
     </section>
 
     <section class="py-4">
-        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'musics_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/music.gif' %}" alt="Music"/>
-            <span class="mt-1">Metal</span>
+        <a class="flex items-center w-fit hover:text-amber-300 pb-2" href="{% url 'musics_by_category' %}">
+            <img class="w-7" src="{% static 'gifs/sound.gif' %}" alt="Music"/>
+            <span class="mt-1 ml-2">Metal</span>
         </a>
         <div class="relative">
             <div id="metal-carousel" class="flex items-stretch overflow-hidden">
@@ -100,7 +101,7 @@
                             <img class="w-full h-full" src="{% static music.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ music.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'music_details' music.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>

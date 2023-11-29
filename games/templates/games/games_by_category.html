@@ -3,6 +3,7 @@
 {% block title %}Jogos{% endblock %}
 
 {% block games_menu %}text-red-600/90{% endblock %}
+{% block games_selected %}<i class="nes-icon is-small star"></i>{% endblock %}
 
 {% block content %}
 
@@ -10,8 +11,8 @@
 
     <section class="py-4">
         <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/among2.gif' %}" alt="Among"/>
-            <span class="mt-1">Tiro</span>
+            <img class="w-10" src="{% static 'gifs/box.gif' %}" alt="Box"/>
+            <span class="mt-1 ml-2">Tiro</span>
         </a>
         <div class="relative">
             <div id="fps-carousel" class="flex items-stretch overflow-hidden">
@@ -34,7 +35,7 @@
                             <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ game.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>
@@ -43,8 +44,8 @@
 
     <section class="py-4">
         <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/among2.gif' %}" alt="Among"/>
-            <span class="mt-1">Fantasia</span>
+            <img class="w-10" src="{% static 'gifs/box.gif' %}" alt="Box"/>
+            <span class="mt-1 ml-2">Fantasia</span>
         </a>
         <div class="relative">
             <div id="fantasy-carousel" class="flex items-stretch overflow-hidden">
@@ -67,7 +68,7 @@
                             <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ game.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>
@@ -76,8 +77,8 @@
 
     <section class="py-4">
         <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/among2.gif' %}" alt="Among"/>
-            <span class="mt-1">Super Héroi</span>
+            <img class="w-10" src="{% static 'gifs/box.gif' %}" alt="Box"/>
+            <span class="mt-1 ml-2">Super Héroi</span>
         </a>
         <div class="relative">
             <div id="hero-carousel" class="flex items-stretch overflow-hidden">
@@ -100,7 +101,7 @@
                             <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ game.price }}</p>
-                        <button type="button" class="nes-btn is-primary w-full">VER</button>
+                        <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
                     </div>
                 {% endfor %}
             </div>

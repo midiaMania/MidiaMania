@@ -18,7 +18,9 @@
 			<div class="container mx-auto">
 				<div class="flex justify-between p-7">
 					<button id="menuBtn" class="nes-btn bg-gray-300 w-14 h-14"><img src="{% static 'icons/menu.svg' %}" alt="Menu"/></button>
-					<img src="{% static 'logo.svg' %}" alt="Logo"/>
+					<a href="{% url 'home' %}">
+						<img src="{% static 'logo.svg' %}" alt="Logo"/>
+					</a>
 					<button class="nes-btn bg-gray-300 w-14 h-14"><img src="{% static 'icons/cart.svg' %}" alt="Carrinho"/></button>
 				</div>
 				<div class="nes-field is-inline px-2 w-full md:w-1/2 mx-auto">

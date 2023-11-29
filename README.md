@@ -46,6 +46,10 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+```sh
+python manage.py tailwind install
+```
+
 ## Executar o projeto
 
 ### Bash/CMD

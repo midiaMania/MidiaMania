@@ -30,11 +30,11 @@
 			</div>
 			<nav id="menu" class="flex justify-center gap-20 bg-amber-400 text-black py-2 relative">
 				<img class="absolute top-[-2.5rem] left-[20%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
-				<a class="hover:text-gray-500" href="{% url 'movies_by_category' %}">Filmes</a>
+				<a class="hover:text-gray-500 {% block movies_menu %}{% endblock %}" href="{% url 'movies_by_category' %}">Filmes</a>
 				<span>|</span>
-				<a class="hover:text-gray-500" href="{% url 'games_by_category' %}">Jogos</a>
+				<a class="hover:text-gray-500 {% block games_menu %}{% endblock %}" href="{% url 'games_by_category' %}">Jogos</a>
 				<span>|</span>
-				<a class="hover:text-gray-500" href="{% url 'musics_by_category' %}">Músicas</a>
+				<a class="hover:text-gray-500 {% block musics_menu %}{% endblock %}" href="{% url 'musics_by_category' %}">Músicas</a>
 			</nav>
 		</header>
 

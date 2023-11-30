@@ -29,12 +29,14 @@
 				</div>
 			</div>
 			<nav id="menu" class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative hidden">
-				<img class="absolute top-[-2.5rem] left-[20%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
+				<img class="absolute top-[-2.5rem] left-[10%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
 				<a class="hover:text-gray-500 {% block movies_menu %}{% endblock %}" href="{% url 'movies_by_category' %}">{% block movies_selected %}{% endblock %}Filmes</a>
 				<span>|</span>
 				<a class="hover:text-gray-500 {% block games_menu %}{% endblock %}" href="{% url 'games_by_category' %}">{% block games_selected %}{% endblock %}Jogos</a>
 				<span>|</span>
 				<a class="hover:text-gray-500 {% block musics_menu %}{% endblock %}" href="{% url 'musics_by_category' %}">{% block musics_selected %}{% endblock %}Músicas</a>
+				<span>|</span>
+				<a class="hover:text-gray-500 {% block profile_menu %}{% endblock %}" href="{% url 'my_profile' %}">{% block profile_selected %}{% endblock %}Meu Perfil</a>
 			</nav>
 		</header>
 

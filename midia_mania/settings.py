@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import platform
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'tailwind',
     'frontend',
     'django_browser_reload',
+    'users.apps.UsersConfig',
     'musics.apps.MusicsConfig',
     'games.apps.GamesConfig',
     'movies.apps.MoviesConfig',
@@ -138,4 +140,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+if platform.system() == 'Windows':
+    NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"

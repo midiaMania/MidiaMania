@@ -8,6 +8,10 @@ def my_profile(request):
             'username': "Joe",
             'email': "joe@joe.com",
             'phone_number': "123",
+            'address':[
+                ['Centro', 'Rua 1', 25],
+                ['Areia Branca', 'Rua 2', 27],
+            ], 
             }
     }
     return render(request, "users/my_profile.html", context)

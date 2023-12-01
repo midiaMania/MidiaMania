@@ -4,13 +4,8 @@
 const menu = document.getElementById("menu");
 const menuBtn = document.getElementById("menuBtn");
 
-addEventListener("load", (event) => {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("hidden")
-});
-
 menuBtn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
+    menu.classList.toggle("hidden-menu");
 });
 
 /* Scroll */

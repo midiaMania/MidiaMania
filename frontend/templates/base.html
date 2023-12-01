@@ -9,6 +9,11 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+		<style>
+			.hidden-menu {
+				display: none !important;
+			}
+		</style>
 		{% tailwind_css %}
 	</head>
 
@@ -28,8 +33,8 @@
 					<button class="nes-btn is-primary"><img src="{% static 'icons/search.svg' %}" alt="Pesquisar"/></button>
 				</div>
 			</div>
-			<nav id="menu" class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative hidden">
-				<img class="absolute top-[-2.5rem] left-[10%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
+			<nav id="menu" class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative">
+				<img class="absolute top-[-2.5rem] left-[10%] xl:left-[20%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
 				<a class="hover:text-gray-500 {% block movies_menu %}{% endblock %}" href="{% url 'movies_by_category' %}">{% block movies_selected %}{% endblock %}Filmes</a>
 				<span>|</span>
 				<a class="hover:text-gray-500 {% block games_menu %}{% endblock %}" href="{% url 'games_by_category' %}">{% block games_selected %}{% endblock %}Jogos</a>

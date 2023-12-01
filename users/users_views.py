@@ -11,3 +11,6 @@ def my_profile(request):
             }
     }
     return render(request, "users/my_profile.html", context)
+
+def login(request):
+    return render(request, "users/login.html")

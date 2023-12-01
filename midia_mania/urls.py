@@ -17,16 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from home import home_views
-from movies import movies_views
-from games import games_views
 from users import users_views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", home_views.home, name = 'home'),
+    path("", include("users.urls")),
+    path("", home_views.home, name='home'),
     path("movies/", include("movies.urls")),
-    path("users/", include("users.urls")),
     path("games/", include("games.urls")),
     path("musics/", include("musics.urls")),
     path("__reload__/", include("django_browser_reload.urls")),

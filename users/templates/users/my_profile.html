@@ -13,9 +13,78 @@
 
 {% block content %}
 
-<div class="nes-field is-inline">
-  <label for="inline_field">Nome</label>
-  <input type="text" id="inline_field" class="nes-input is-success" placeholder={{user.name}} />
+  {% load static %}
+
+<div class="mt-5 nes-container with-title is-centered">
+    <p>Esse é o seu cantinho, ajuste seu perfil para deixá-lo como você gosta</p>
+</div>
+
+<div class= 'flex mt-20'>
+
+  <div>
+    <div class="whitespace-nowrap mb-5">
+      <button type="button" class="nes-btn is-primary w-full">Meus Dados</button>
+    </div>
+    <div class="whitespace-nowrap mb-5">
+      <button type="button" class="nes-btn is-success w-full">Minhas Compras</button>
+    </div>
+    <div class="whitespace-nowrap mb-5">
+      <button type="button" class="nes-btn is-error w-full">Meu Carrinho</button>
+    </div>
+    <div class="whitespace-nowrap mb-5">
+      <button type="button" class="nes-btn is-warning w-full">Mudar Senha</button>
+    </div>
+  </div>
+  
+
+  <div class='mx-auto w-[700px]'>
+
+    <div class="flex justify-center mb-4">
+      <i class="nes-ash"></i>
+    </div>
+
+    <div class = "flex mb-5">
+      <div class="nes-field is-inline container">
+        <div class='w-[120px]'>
+          <label for="inline_field">Nome</label>
+        </div>
+        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.name}} />
+      </div>
+      <img class="w-14 h-12" src="{% static 'gifs/pokebola.png' %}" alt="Pokebola"/>
+    </div>
+
+    <div class = "flex mb-5">
+      <div class="nes-field is-inline container">
+        <div class='w-[120px]'>
+          <label for="inline_field">Usuário</label>
+        </div>
+        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.username}} />
+      </div>
+      <img class="w-14 h-12" src="{% static 'gifs/pokebola.png' %}" alt="Pokebola"/>
+    </div>
+
+    <div class = "flex mb-5">
+      <div class="nes-field is-inline container">
+        <div class='w-[120px]'>
+          <label for="inline_field">Email</label>
+        </div>
+        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.email}} />
+      </div>
+      <img class="w-14 h-12" src="{% static 'gifs/pokebola.png' %}" alt="Pokebola"/>
+    </div>
+
+    <div class = "flex mb-5">
+      <div class="nes-field is-inline container">
+        <div class='w-[120px]'>
+          <label for="inline_field">Telefone</label>
+        </div>
+        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.phone_number}} />
+      </div>
+      <img class="w-14 h-12" src="{% static 'gifs/pokebola.png' %}" alt="Pokebola"/>
+    </div>
+
+  </div>
+
 </div>
 
 

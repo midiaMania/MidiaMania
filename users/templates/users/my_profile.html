@@ -24,20 +24,20 @@
 
   <div>
     <div class="whitespace-nowrap mb-5">
-      <a href="{% url 'my_profile' %}" class="nes-btn is-primary w-full">Meus Dados</a>    
+      <button id='menuProfileBtn_1' class="nes-btn is-primary w-full">Meus Dados</button>    
     </div>
     <div class="whitespace-nowrap mb-5">
-      <a class="nes-btn w-full" href="{% url 'cart' %}">Meu Carrinho</a>
+      <button id='menuProfileBtn_2' class="nes-btn w-full">Meus Endereços</button>
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button type="button" class="nes-btn is-error w-full">Minhas Compras</button>
+      <button id='menuProfileBtn_3' class="nes-btn is-error w-full">Minhas Compras</button>
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button type="button" class="nes-btn is-warning w-full">Mudar Senha</button>
+      <button id='menuProfileBtn_4' class="nes-btn is-warning w-full">Mudar Senha</button>
     </div>
   </div>
   
-  
+<div id = 'menuProfile_1' class = 'flex'>
   <div class='ml-[80px] w-[630px]'>
 
     <div class="flex justify-center mb-5 ml-20">
@@ -100,14 +100,29 @@
     <div class='mt-10 ml-10 flex justify-center'>
       <button type="button" class="nes-btn is-success">Salvar</button>
     </div>
-
   </div>
 
   <div>
     <img class="w-[200px] h-[180px] ml-[115px] mt-[190px]" src="{% static 'gifs/buizel.gif' %}" alt="Buizel"/>
-  <div>
+  </div>
 
 </div>
 
 
+<div id ='menuProfile_2' class = 'hidden mx-auto'>
+  <p>Meus Endereços</p>
+</div>
+
+<div id ='menuProfile_3' class = 'hidden mx-auto'>
+  <p>Minhas Compras</p>
+</div>
+
+<div id ='menuProfile_4' class = 'hidden mx-auto'>
+  <p>Mudar Senha</p>
+</div>
+
+
+</div>
+
 {% endblock %}
+

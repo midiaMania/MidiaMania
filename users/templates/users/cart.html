@@ -4,48 +4,19 @@
   Meu Carrinho
 {% endblock %}
 
-{% block profile_menu %}
-  text-red-600/90
-{% endblock %}
-{% block profile_selected %}
-  <i class="nes-icon is-small heart"></i>
-{% endblock %}
 
 {% block content %}
 
   {% load static %}
 
 <div class="mt-5 nes-container with-title is-centered">
-    <p>Esse é o seu cantinho, ajuste seu perfil para deixá-lo como você gosta</p>
+    <p>Esse é o seu carrinho, mantenha aqui os produtos que você deseja comprar</p>
 </div>
 
 
-<div class= 'flex mt-20'>
-
-
-  <div>
-    <div class="whitespace-nowrap mb-5">
-      <a href="{% url 'my_profile' %}" class="nes-btn is-primary w-full">Meus Dados</a>    
-    </div>
-    <div class="whitespace-nowrap mb-5">
-      <a class="nes-btn w-full" href="{% url 'cart' %}">Meu Carrinho</a>
-    </div>
-    <div class="whitespace-nowrap mb-5">
-      <button type="button" class="nes-btn is-error w-full">Minhas Compras</button>
-    </div>
-    <div class="whitespace-nowrap mb-5">
-      <button type="button" class="nes-btn is-warning w-full">Mudar Senha</button>
-    </div>
+  <div class="flex justify-center mb-5 ml-20">
+      <img src="{% static 'gifs/yoshi.gif' %}" class='w-auto h-[90px]' alt="Carrinho"/>
   </div>
-  
-  <div class='ml-[80px] w-[630px]'>
-    <div class="flex justify-center mb-5 ml-20">
-        <img src="{% static 'gifs/yoshi.gif' %}" class='w-auto h-[90px]' alt="Carrinho"/>
-    </div>
-  </div>
-
-  
-</div>
 
 
 

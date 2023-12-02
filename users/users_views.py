@@ -10,7 +10,7 @@ def my_profile(request):
             'phone_number': "123",
             'address':[
                 ['Centro', 'Rua 1', 25],
-                ['Areia Branca', 'Rua 2', 27],
+                ['Areia Branca', 'Rua 2', 27]
             ], 
             }
     }
@@ -21,3 +21,4 @@ def login(request):
 
 def cart(request):
     return render(request, "users/cart.html")
+

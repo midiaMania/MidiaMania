@@ -24,93 +24,135 @@
 
   <div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_1' class="nes-btn is-primary w-full">Meus Dados</button>    
+      <button id='menuProfileBtn_1' class="nes-btn is-success w-full">Meus Dados</button>    
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_2' class="nes-btn w-full">Meus Endereços</button>
+      <button id='menuProfileBtn_2' class="nes-btn is-warning w-full">Meus Endereços</button>
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_3' class="nes-btn is-error w-full">Minhas Compras</button>
+      <button id='menuProfileBtn_3' class="nes-btn is-primary w-full">Minhas Compras</button>
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_4' class="nes-btn is-warning w-full">Mudar Senha</button>
+      <button id='menuProfileBtn_4' class="nes-btn is-error w-full">Mudar Senha</button>
     </div>
   </div>
   
 <div id = 'menuProfile_1' class = 'flex'>
   <div class='ml-[80px] w-[630px]'>
 
-    <div class="flex justify-center mb-5 ml-20">
-      <i class="nes-ash"></i>
+    <div class="flex justify-center mb-5 ml-[80px]">
+      <img class="w-[120px] h-[100px]" src="{% static 'images/bugcatcher.png' %}" alt="Bug Catcher"/>
     </div>
 
     <div class = "flex mb-5">
       <div class="nes-field is-inline container">
-        <div class='w-[120px]'>
+        <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Nome</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.name}} />
+        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4" placeholder={{user.name}} />
       </div>
-      <img class="w-14 h-12" src="{% static 'images/pokebola.png' %}" alt="Pokebola"/>
+      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
     </div>
 
     <div class = "flex mb-5">
       <div class="nes-field is-inline container">
-        <div class='w-[120px]'>
+        <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Usuário</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.username}} />
+        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4 " placeholder={{user.username}} />
       </div>
-      <img class="w-14 h-12" src="{% static 'images/pokebola.png' %}" alt="Pokebola"/>
+      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
     </div>
 
     <div class = "flex mb-5">
       <div class="nes-field is-inline container">
-        <div class='w-[120px]'>
+        <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Email</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success " placeholder={{user.email}} />
+        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4" placeholder={{user.email}} />
       </div>
-      <img class="w-14 h-12" src="{% static 'images/pokebola.png' %}" alt="Pokebola"/>
+      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
     </div>
 
     <div class = "flex mb-5">
       <div class="nes-field is-inline container">
-        <div class='w-[120px]'>
+        <div class='w-[120px] flex justify-center '>
           <label for="inline_field">Telefone</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success" placeholder={{user.phone_number}} />
+        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4" placeholder={{user.phone_number}} />
       </div>
-      <img class="w-14 h-12" src="{% static 'images/pokebola.png' %}" alt="Pokebola"/>
+      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
     </div>
 
-    <div class='flex'>
-      <label for="success_select" class='w-[160px] my-auto'>Endereço</label>
+    <div class='flex '>
+      <label for="success_select" class='w-[165px] flex items-center justify-center'>Endereço</label>
       <div class="nes-select is-success">
-        <select required id="success_select">
+        <select class='bg-transparent'required id="success_select">
           <option value="" disabled selected hidden>Select...</option>
           {%for end in user.address %}
             <option value={{forloop.counter}}>{{end}}</option>
           {% endfor %}
         </select>
       </div>
-      <img class="w-14 h-12" src="{% static 'images/pokebola.png' %}" alt="Pokebola"/>
+      <img class="w-16 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
     </div>
 
-    <div class='mt-10 ml-10 flex justify-center'>
+    <div class='mt-10 ml-[68px] flex justify-center'>
       <button type="button" class="nes-btn is-success">Salvar</button>
     </div>
   </div>
 
   <div>
-    <img class="w-[200px] h-[180px] ml-[115px] mt-[190px]" src="{% static 'gifs/buizel.gif' %}" alt="Buizel"/>
+    <img class="w-[200px] h-[180px] ml-[115px] mt-[190px]" src="{% static 'gifs/venusaur.gif' %}" alt="Venu"/>
   </div>
 
 </div>
 
 
-<div id ='menuProfile_2' class = 'hidden mx-auto'>
-  <p>Meus Endereços</p>
+<div id ='menuProfile_2' class = 'hidden flex'>
+
+  <div class='ml-[140px] w-[600px]'>
+
+    <div class="flex justify-center mb-5">
+      <img class='w-[100px] h-[100px]'src="{% static 'images/burglar_trainer.png' %}" alt="Engineer"/>
+    </div>
+
+    {%for ends in user.address %}
+    <div class='flex'>
+      <div class="nes-input is-warning bg-transparent text-yellow-500 mb-10">
+        <span>Endereço {{forloop.counter}}: </span>
+        {%for item in ends%}
+        <span>{{ item }}{% if not forloop.last %},{% endif %}</span>
+        {%endfor%}
+      </div>
+
+      <div>
+        <button type="button" class="nes-btn is-warning">
+          <img class='w-[25px] h-[20px]'src="{% static 'images/remove.png' %}" alt="Remove"/>
+        </button>
+      </div>
+
+    </div>
+    {%endfor%}
+
+    <div class='flex'>
+      <div class="nes-field is-inline w-full">
+        <input type="text" id="warning_field" class="nes-input is-warning bg-transparent border-4" placeholder="Bairro, Rua, Número">
+      </div>
+
+      <div>
+        <button type="button" class="nes-btn is-warning">
+          <img class='w-[25px] h-[20px]'src="{% static 'images/add.png' %}" alt="Add"/>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class='flex justify-center items-center'>
+    <img class="w-[120px] h-[120px] ml-[130px] mt-[100px]" src="{% static 'gifs/pikachu.gif' %}" alt="Pikachu"/>
+  </div>
+  
 </div>
 
 <div id ='menuProfile_3' class = 'hidden mx-auto'>

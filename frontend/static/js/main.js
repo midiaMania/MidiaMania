@@ -82,7 +82,7 @@ function easeInOut(t, b, c, d) {
 };
 
 /* Chatbot Silvo Santos */
-
+/*
 (function (d, t) {
     var BASE_URL = "https://plataforma2.innovchat.com.br";
     var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -96,4 +96,4 @@ function easeInOut(t, b, c, d) {
             baseUrl: BASE_URL
         });
     };
-})(document, "script");
+})(document, "script");*/

@@ -24,24 +24,22 @@
 
   <div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_1' class="nes-btn is-success w-full">Meus Dados</button>    
+      <button id='menuProfileBtn_1' class="nes-btn is-warning w-full">Meus Dados</button>    
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_2' class="nes-btn is-warning w-full">Meus Endereços</button>
+      <button id='menuProfileBtn_2' class="nes-btn is-error w-full">Meus Endereços</button>
     </div>
     <div class="whitespace-nowrap mb-5">
       <button id='menuProfileBtn_3' class="nes-btn is-primary w-full">Minhas Compras</button>
     </div>
-    <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_4' class="nes-btn is-error w-full">Mudar Senha</button>
-    </div>
   </div>
   
+  
 <div id = 'menuProfile_1' class = 'flex'>
-  <div class='ml-[80px] w-[630px]'>
+  <div class='ml-[75px] w-[600px]'>
 
-    <div class="flex justify-center mb-5 ml-[80px]">
-      <img class="w-[120px] h-[100px]" src="{% static 'images/bugcatcher.png' %}" alt="Bug Catcher"/>
+    <div class="flex justify-center mb-10 ml-[80px]">
+      <i class="nes-ash"></i>    
     </div>
 
     <div class = "flex mb-5">
@@ -49,9 +47,9 @@
         <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Nome</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4" placeholder={{user.name}} />
+        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.name}} />
       </div>
-      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
+      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
     <div class = "flex mb-5">
@@ -59,9 +57,9 @@
         <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Usuário</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4 " placeholder={{user.username}} />
+        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4 " placeholder={{user.username}} />
       </div>
-      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
+      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
     <div class = "flex mb-5">
@@ -69,9 +67,9 @@
         <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Email</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4" placeholder={{user.email}} />
+        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.email}} />
       </div>
-      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
+      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
     <div class = "flex mb-5">
@@ -79,31 +77,43 @@
         <div class='w-[120px] flex justify-center '>
           <label for="inline_field">Telefone</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-success bg-transparent border-4" placeholder={{user.phone_number}} />
+        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.phone_number}} />
       </div>
-      <img class="w-12 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
+      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
+    </div>
+
+    <div class = "flex mb-5">
+      <div class="nes-field is-inline container">
+        <div class='w-[120px] flex justify-center '>
+          <label for="inline_field">Senha</label>
+        </div>
+        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder='**********' />
+      </div>
+      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
     <div class='flex '>
-      <label for="success_select" class='w-[165px] flex items-center justify-center'>Endereço</label>
-      <div class="nes-select is-success">
-        <select class='bg-transparent'required id="success_select">
+      <label for="warning_select" class='w-[165px] flex items-center justify-center'>Endereço</label>
+      <div class="nes-select is-warning">
+        <select class='bg-transparent'required id="warning_select">
           <option value="" disabled selected hidden>Select...</option>
           {%for end in user.address %}
             <option value={{forloop.counter}}>{{end}}</option>
           {% endfor %}
         </select>
       </div>
-      <img class="w-16 h-10 my-auto" src="{% static 'images/safariball.png' %}" alt="Safari Ball"/>
+      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
+    
+
     <div class='mt-10 ml-[68px] flex justify-center'>
-      <button type="button" class="nes-btn is-success">Salvar</button>
+      <button type="button" class="nes-btn is-warning">Salvar</button>
     </div>
   </div>
 
-  <div>
-    <img class="w-[200px] h-[180px] ml-[115px] mt-[190px]" src="{% static 'gifs/venusaur.gif' %}" alt="Venu"/>
+  <div class='flex justify-center items-center'>
+    <img class="w-[140px] h-[140px] ml-[150px]" src="{% static 'gifs/pikachu.gif' %}" alt="Pikachu"/>
   </div>
 
 </div>
@@ -111,15 +121,15 @@
 
 <div id ='menuProfile_2' class = 'hidden flex'>
 
-  <div class='ml-[140px] w-[600px]'>
+  <div class='ml-[115px] w-[600px]'>
 
-    <div class="flex justify-center mb-5">
-      <img class='w-[100px] h-[100px]'src="{% static 'images/burglar_trainer.png' %}" alt="Engineer"/>
+    <div class="flex justify-center mb-10 ">
+      <i class="nes-ash"></i>
     </div>
 
     {%for ends in user.address %}
     <div class='flex'>
-      <div class="nes-input is-warning bg-transparent text-yellow-500 mb-10">
+      <div class="nes-input is-error bg-transparent text-red-500 mb-10">
         <span>Endereço {{forloop.counter}}: </span>
         {%for item in ends%}
         <span>{{ item }}{% if not forloop.last %},{% endif %}</span>
@@ -127,7 +137,7 @@
       </div>
 
       <div>
-        <button type="button" class="nes-btn is-warning">
+        <button type="button" class="nes-btn is-error">
           <img class='w-[25px] h-[20px]'src="{% static 'images/remove.png' %}" alt="Remove"/>
         </button>
       </div>
@@ -137,11 +147,11 @@
 
     <div class='flex'>
       <div class="nes-field is-inline w-full">
-        <input type="text" id="warning_field" class="nes-input is-warning bg-transparent border-4" placeholder="Bairro, Rua, Número">
+        <input type="text" id="error_field" class="nes-input is-error bg-transparent border-4" placeholder="Bairro, Rua, Número">
       </div>
 
       <div>
-        <button type="button" class="nes-btn is-warning">
+        <button type="button" class="nes-btn is-error">
           <img class='w-[25px] h-[20px]'src="{% static 'images/add.png' %}" alt="Add"/>
         </button>
       </div>
@@ -150,17 +160,46 @@
   </div>
 
   <div class='flex justify-center items-center'>
-    <img class="w-[120px] h-[120px] ml-[130px] mt-[100px]" src="{% static 'gifs/pikachu.gif' %}" alt="Pikachu"/>
+    <img class="w-[140px] h-[120px] ml-[130px] mt-[100px]" src="{% static 'gifs/growlite.gif' %}" alt="Growlite"/>
   </div>
   
 </div>
 
-<div id ='menuProfile_3' class = 'hidden mx-auto'>
-  <p>Minhas Compras</p>
-</div>
+<div id ='menuProfile_3' class = 'hidden flex'>
+  <div class='ml-[90px] w-[650px]'>
 
-<div id ='menuProfile_4' class = 'hidden mx-auto'>
-  <p>Mudar Senha</p>
+    <div class="flex justify-center mb-10 ">
+      <i class="nes-ash"></i>
+    </div>
+
+  {%for item in user.shopping%}
+    <div class='ml-[30px] flex'>
+        <div class="nes-container border border-blue-500 rounded border-4 flex mb-5">
+          <div class="nes-container is-rounded is-dark">
+            <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
+          </div>
+
+          <div class='ml-[30px] mt-[35px] text-blue-600'>
+            <p class='mb-[10px]'>Tipo: {{item.type}}</p>
+            <p class='mb-[10px]'>Nome: {{item.name}}</p>
+            <p class='mb-[10px]'>Valor: R$ {{item.price}}</p>
+            <p class='mb-[10px]'>Aquisição: {{item.date}}</p>
+          </div>
+        </div>
+
+        <div class='flex items-center ml-5'>
+          <img class='w-[30px] h-[40px]' src="{% static 'images/rupee.png' %}" alt="Image"/>
+        </div>
+
+    </div>
+    {%endfor%}
+
+  </div>
+
+  <div class='flex justify-center items-center'>
+    <img class="w-[140px] h-[160px] ml-[140px] mt-[100px]" src="{% static 'gifs/vaporeon.gif' %}" alt="Vaporeon"/>
+  </div>
+
 </div>
 
 

@@ -43,6 +43,9 @@ def my_profile(request):
 def login(request):
     return render(request, "users/login.html")
 
+def signup(request):
+    return render(request, "users/signup.html")
+
 def cart(request):
     return render(request, "users/cart.html")
 

@@ -98,3 +98,9 @@ python manage.py tailwind start ; python manage.py runserver
 
 
 ![git_Branchnaming](https://miro.medium.com/v2/resize:fit:720/format:webp/1*GpWwKA_FRh3o-3pWNJ767Q.png)
+
+# Créditos
+
+[<img src="https://www.gstatic.com/tenor/web/attribution/PB_tenor_logo_blue_horizontal.png" alt="tenor" width="200px" />](https://tenor.com/pt-BR/)
+
+[<img src="https://raw.githubusercontent.com/cirla/vim-giphy/master/powered_by_giphy.gif" alt="giphy" width="200px" />](https://giphy.com/)

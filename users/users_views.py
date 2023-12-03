@@ -46,6 +46,9 @@ def login(request):
 def signup(request):
     return render(request, "users/signup.html")
 
+def checkout(request):
+    return render(request, "users/checkout.html")
+
 def cart(request):
     return render(request, "users/cart.html")
 

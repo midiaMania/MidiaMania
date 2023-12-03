@@ -8,7 +8,9 @@
     <section class="flex flex-col items-center md:flex-row md:items-start py-7 gap-10">
         <div class="relative w-96">
             <img class="w-96" src="{% static img %}" alt="Capa"/>
-            <img class="w-14 absolute bottom-0" src="{% static 'gifs/game-over.gif' %}" alt="Game over"/>
+            <img class="w-full absolute bottom-0 right-0" src="{% static 'gifs/battle.gif' %}" alt="Naruto"/>
+            <img class="w-14 absolute -top-14 left-0" src="{% static 'gifs/itachi.gif' %}" alt="Itachi"/>
+            <img class="w-14 absolute bottom-20 right-0 -scale-x-100" src="{% static 'gifs/gaara.gif' %}" alt="Gaara"/>
         </div>
 
         <div class="flex-1">
@@ -44,14 +46,14 @@
 
             <span class="flex gap-4 mt-2 items-center">
                 <button class="nes-btn is-primary mt-4 py-3 px-10">Comprar</button>
-                <img class="w-14 mt-2" src="{% static 'gifs/mario.gif' %}" alt="Mario"/>
+                <img class="w-20 mt-2" src="{% static 'gifs/minato.gif' %}" alt="Minato"/>
             </span>
         </div>
     </section>
 
-    <section class="pb-7">
-        <div class="flex items-center">
-            <img class="w-10" src="{% static 'gifs/space-invaders-white.gif' %}" alt="Space invaders"/>
+    <section class="pb-7 -mt-7">
+        <div class="flex items-end gap-2">
+            <img class="w-7" src="{% static 'gifs/bomberman.gif' %}" alt="Bomberman"/>
             <p class="text-xl">Descrição</p>
         </div>
 
@@ -62,9 +64,10 @@
             <p>Distribuidora: {{ publisher }}</p>
             <p>Lançamento: {{ release_date }}</p>
             <p class="flex flex-col gap-2">
-                <span>
+                <span class="relative">
                     Classificação: 
                     <span class="{% if rating == 0 %}bg-emerald-400{% elif rating == 10 %}bg-cyan-400{% elif rating == 12 %}bg-yellow-400{% elif rating == 14 %}bg-orange-400{% elif rating == 16 %}bg-red-700{% elif rating == 18 %}bg-black border-gray-300 border-2{% endif %} text-white p-2">{% if rating == 0%}L{% else %}{{ rating }}{% endif %}</span>
+                    <img class="w-10 absolute left-72 -top-7 -scale-x-100" src="{% static 'gifs/zelda.gif' %}" alt="Zelda"/>
                 </span>
                 <span class="text-xs">*{% if rating == 0 %}Livre{% else %}Não recomendado para menores de {{ rating }} anos{% endif %}</span>
             </p>

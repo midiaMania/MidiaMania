@@ -50,5 +50,28 @@ def checkout(request):
     return render(request, "users/checkout.html")
 
 def cart(request):
-    return render(request, "users/cart.html")
+     context= {
+                'cart':[
+                    {
+                        'type': 'Filme',
+                        'name': "MIB",
+                        'price': "{:,.2f}".format(14).replace('.', ','),
+                        'img': "movies/images/2.jpg",
+                    },
+                    {
+                        'type':'Jogo',
+                        'name': "Watch Dogs",
+                        'price': "{:,.2f}".format(40).replace('.', ','),
+                        'img': "games/images/3.jpg",
+                    },
+                    {
+                        'type':'Música',
+                        'name':'Kid Abelha',
+                        'price': "{:,.2f}".format(14).replace('.', ','),
+                        'img': "musics/images/1.jpg",
+                    },
+                ],
+                'total_price': "{:,.2f}".format(68).replace('.', ','),
+            }
+     return render(request, "users/cart.html", context)
 

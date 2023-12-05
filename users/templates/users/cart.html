@@ -18,6 +18,28 @@
       <img src="{% static 'gifs/yoshi.gif' %}" class='w-auto h-[90px]' alt="Carrinho"/>
   </div>
 
+  {%for item in cart%}
+  <div class="flex nes-container is-rounded is-dark">
+    <div class='border-double border-4 border-slate-400 rounded-xl'>
+      <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
+    </div>
+    <div class='ml-[50px] my-[30px]'>
+      <p class='mb-[10px]'>Tipo de mídia: {{item.type}}</p>
+      <p class='mb-[10px]'>Nome da mídia: {{item.name}}</p>
+      <p class='mb-[10px]'>Preço do item: R$ {{item.price}}</p>
+    </div>
+  </div>
 
+  <div class='mb-5'>
+  </div>
+
+  {%endfor%}
+  
+  <div class="flex nes-container is-rounded is-dark">
+    <div>
+      <img class='w-[30px] h-[30px] mr-[20px] mb-[5px]'src="{% static 'gifs/coin-spin.gif' %}" alt="Image"/>
+    </div>
+    <p class='my-[8px]'>Preço Total: R$ {{ total_price }}</p>
+  </div>
 
 {% endblock %}

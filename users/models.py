@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,3 +13,18 @@ class UserProfile(models.Model):
     cep = models.CharField(max_length=10)
     complement = models.CharField(max_length=255)
 
+#TODO: entender logica de puxar imagem
+def get_image_upload_path(instance, filename):
+    # Obtém a extensão do arquivo
+    extensao = filename.split('.')[-1]
+    # Monta o caminho do arquivo com base no tipo e nome do produto
+    path = os.path.join('static', instance.product_type, f"{instance.product_name}.{extensao}")
+    return path
+
+class ShoppingCartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_type = models.CharField(max_length=255)
+    product_name = models.CharField(max_length=255)
+    product_price = models.DecimalField(max_digits=10, decimal_places=2)
+    product_image = models.ImageField(upload_to=get_image_upload_path)
+    purchase_date = models.DateField()

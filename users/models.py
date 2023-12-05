@@ -28,3 +28,13 @@ class ShoppingCartItem(models.Model):
     product_price = models.DecimalField(max_digits=10, decimal_places=2)
     product_image = models.ImageField(upload_to=get_image_upload_path)
     purchase_date = models.DateField()
+
+
+class PurchasedItem(models.Model):
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    product_type = models.CharField(max_length=255)
+    product_name = models.CharField(max_length=255)
+    product_price = models.DecimalField(max_digits=5, decimal_places=2)
+    product_image = models.ImageField(upload_to=get_image_upload_path)
+    date = models.DateField()
+

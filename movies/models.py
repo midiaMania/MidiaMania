@@ -12,8 +12,9 @@ class Movie(models.Model):
     running_time = models.IntegerField()  # Em minutos
     rating = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    img = models.CharField(max_length=255)
-
+    img = models.ImageField(upload_to='frontend/static/images/games/')
+    copias = models.IntegerField()
+    slug = models.SlugField(unique=True)
     def __str__(self):
         return self.title
 

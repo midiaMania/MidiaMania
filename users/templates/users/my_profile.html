@@ -30,7 +30,7 @@
       <button id='menuProfileBtn_2' class="nes-btn is-error w-full">Meus Endereços</button>
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_3' class="nes-btn is-primary w-full">Minhas Compras</button>
+      <button id='menuProfileBtn_3' class="nes-btn is-primary w-full">Meus Pedidos</button>
     </div>
   </div>
   
@@ -166,38 +166,34 @@
 </div>
 
 <div id ='menuProfile_3' class = 'hidden flex'>
-  <div class='ml-[90px] w-[650px]'>
+  <div class='ml-[50px] w-[700px]'>
 
-    <div class="flex justify-center mb-10 ">
+    <div class="flex justify-center mb-10 ml-[30px] ">
       <i class="nes-ash"></i>
     </div>
 
   {%for item in user.shopping%}
     <div class='ml-[30px] flex'>
-        <div class="nes-container border border-blue-500 rounded border-4 flex mb-5">
-          <div class="nes-container is-rounded is-dark">
+        <div class="flex nes-container is-rounded is-dark container">
+          <div class="border-double border-4 border-slate-400 rounded-xl">
             <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
           </div>
 
-          <div class='ml-[30px] mt-[35px] text-blue-600'>
-            <p class='mb-[10px]'>Tipo: {{item.type}}</p>
-            <p class='mb-[10px]'>Nome: {{item.name}}</p>
-            <p class='mb-[10px]'>Valor: R$ {{item.price}}</p>
-            <p class='mb-[10px]'>Aquisição: {{item.date}}</p>
+          <div class='ml-[30px] my-auto text-blue-200'>
+            <p class='mb-[10px]'>Tipo de mídia: {{item.type}}</p>
+            <p class='mb-[10px]'>Nome da mídia: {{item.name}}</p>
+            <p class='mb-[10px]'>Valor do item: R$ {{item.price}}</p>
+            <p class='mb-[10px]'>Data de Compra: {{item.date}}</p>
           </div>
         </div>
-
-        <div class='flex items-center ml-5'>
-          <img class='w-[30px] h-[40px]' src="{% static 'images/rupee.png' %}" alt="Image"/>
-        </div>
-
     </div>
+
     {%endfor%}
 
   </div>
 
   <div class='flex justify-center items-center'>
-    <img class="w-[140px] h-[160px] ml-[140px] mt-[100px]" src="{% static 'gifs/vaporeon.gif' %}" alt="Vaporeon"/>
+    <img class="w-[140px] h-[160px] ml-[110px] mt-[100px]" src="{% static 'gifs/vaporeon.gif' %}" alt="Vaporeon"/>
   </div>
 
 </div>

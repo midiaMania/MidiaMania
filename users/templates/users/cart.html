@@ -19,14 +19,22 @@
   </div>
 
   {%for item in cart%}
-  <div class="flex nes-container is-rounded is-dark">
-    <div class='border-double border-4 border-slate-400 rounded-xl'>
-      <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
+  <div class='flex'>
+    <div class="flex nes-container is-rounded is-dark w-[95%]">
+      <div class='border-double border-4 border-slate-400 rounded-xl'>
+        <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
+      </div>
+      <div class='ml-[50px] my-[30px]'>
+        <p class='mb-[10px]'>Tipo de mídia: {{item.type}}</p>
+        <p class='mb-[10px]'>Nome da mídia: {{item.name}}</p>
+        <p class='mb-[10px]'>Preço do item: R$ {{item.price}}</p>
+      </div>
     </div>
-    <div class='ml-[50px] my-[30px]'>
-      <p class='mb-[10px]'>Tipo de mídia: {{item.type}}</p>
-      <p class='mb-[10px]'>Nome da mídia: {{item.name}}</p>
-      <p class='mb-[10px]'>Preço do item: R$ {{item.price}}</p>
+
+    <div class='my-auto'>
+      <button type="button" class="nes-btn is-error w=[30px] h-[50px]">
+        <img class='w-[25px] h-[20px]'src="{% static 'images/remove.png' %}" alt="Remove"/>
+      </button>
     </div>
   </div>
 
@@ -35,7 +43,7 @@
 
   {%endfor%}
   
-  <div class="flex nes-container is-rounded is-dark">
+  <div class="flex nes-container is-rounded is-dark w-[95%]">
     <div>
       <img class='w-[30px] h-[30px] mr-[20px] mb-[5px]'src="{% static 'gifs/coin-spin.gif' %}" alt="Image"/>
     </div>

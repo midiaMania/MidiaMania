@@ -27,10 +27,7 @@
       <button id='menuProfileBtn_1' class="nes-btn is-warning w-full">Meus Dados</button>    
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_2' class="nes-btn is-error w-full">Meus Endereços</button>
-    </div>
-    <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_3' class="nes-btn is-primary w-full">Meus Pedidos</button>
+      <button id='menuProfileBtn_2' class="nes-btn is-error w-full">Meus Pedidos</button>
     </div>
   </div>
   
@@ -92,22 +89,8 @@
       <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
-    <div class='flex '>
-      <label for="warning_select" class='w-[165px] flex items-center justify-center'>Endereço</label>
-      <div class="nes-select is-warning">
-        <select class='bg-transparent'required id="warning_select">
-          <option value="" disabled selected hidden>Select...</option>
-          {%for end in user.address %}
-            <option value={{forloop.counter}}>{{end}}</option>
-          {% endfor %}
-        </select>
-      </div>
-      <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
-    </div>
 
-    
-
-    <div class='mt-10 ml-[68px] flex justify-center'>
+    <div class='mt-10 ml-[60px] flex justify-center'>
       <button type="button" class="nes-btn is-warning">Salvar</button>
     </div>
   </div>
@@ -118,54 +101,7 @@
 
 </div>
 
-
 <div id ='menuProfile_2' class = 'hidden flex'>
-
-  <div class='ml-[115px] w-[600px]'>
-
-    <div class="flex justify-center mb-10 ">
-      <i class="nes-ash"></i>
-    </div>
-
-    {%for ends in user.address %}
-    <div class='flex'>
-      <div class="nes-input is-error bg-transparent text-red-500 mb-10">
-        <span>Endereço {{forloop.counter}}: </span>
-        {%for item in ends%}
-        <span>{{ item }}{% if not forloop.last %},{% endif %}</span>
-        {%endfor%}
-      </div>
-
-      <div>
-        <button type="button" class="nes-btn is-error">
-          <img class='w-[25px] h-[20px]'src="{% static 'images/remove.png' %}" alt="Remove"/>
-        </button>
-      </div>
-
-    </div>
-    {%endfor%}
-
-    <div class='flex'>
-      <div class="nes-field is-inline w-full">
-        <input type="text" id="error_field" class="nes-input is-error bg-transparent border-4" placeholder="Bairro, Rua, Número">
-      </div>
-
-      <div>
-        <button type="button" class="nes-btn is-error">
-          <img class='w-[25px] h-[20px]'src="{% static 'images/add.png' %}" alt="Add"/>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <div class='flex justify-center items-center'>
-    <img class="w-[140px] h-[120px] ml-[130px] mt-[100px]" src="{% static 'gifs/growlite.gif' %}" alt="Growlite"/>
-  </div>
-  
-</div>
-
-<div id ='menuProfile_3' class = 'hidden flex'>
   <div class='ml-[50px] w-[700px]'>
 
     <div class="flex justify-center mb-10 ml-[30px] ">
@@ -175,11 +111,11 @@
   {%for item in user.shopping%}
     <div class='ml-[30px] flex'>
         <div class="flex nes-container is-rounded is-dark container">
-          <div class="border-double border-4 border-slate-400 rounded-xl">
+          <div class="border-double border-4 border-red-500 rounded-xl">
             <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
           </div>
 
-          <div class='ml-[30px] my-auto text-blue-200'>
+          <div class='ml-[30px] my-auto text-red-500'>
             <p class='mb-[10px]'>Tipo de mídia: {{item.type}}</p>
             <p class='mb-[10px]'>Nome da mídia: {{item.name}}</p>
             <p class='mb-[10px]'>Valor do item: R$ {{item.price}}</p>
@@ -193,7 +129,7 @@
   </div>
 
   <div class='flex justify-center items-center'>
-    <img class="w-[140px] h-[160px] ml-[110px] mt-[100px]" src="{% static 'gifs/vaporeon.gif' %}" alt="Vaporeon"/>
+    <img class="w-[140px] h-[120px] ml-[130px] mt-[100px]" src="{% static 'gifs/growlite.gif' %}" alt="Growlite"/>
   </div>
 
 </div>

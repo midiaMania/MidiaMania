@@ -27,7 +27,7 @@
         </div>
     </section>
 
-    <section id="delivery" class="flex w-full my-2 gap-4 md:px-20 2xl:px-7">
+    <section id="delivery" class="flex w-full mt-4 mb-2 gap-4 md:px-20 2xl:px-7">
         <div class="flex flex-col gap-4">
             <div class="nes-container is-dark with-title is-rounded">
                 <p class="title">ENDEREÇO</p>
@@ -67,42 +67,49 @@
         </div>
     </section>
 
-    <section id="payment" class="w-full my-2 gap-4 md:px-20 2xl:px-7 hidden">
+    <section id="payment" class="w-full mt-4 mb-2 gap-4 md:px-20 2xl:px-7 hidden">
         <div class="flex flex-col gap-4">
             <div class="nes-container is-dark with-title is-rounded">
-                <p class="title">ENDEREÇO</p>
-                <div class="px-2 pb-2">
-                    <div class="nes-field is-inline gap-2">
-                        <input id="city" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Cidade">
-                        <input id="neighborhood" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Bairro">
-                        <input id="number" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none flex-[1_!important]" placeholder="Nº">
-                    </div>
-                    <div class="nes-field is-inline gap-2">
-                        <input id="street" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Rua">
-                        <input id="cep" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="CEP">
-                        <input id="cep" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Complemento">
-                    </div>
+                <p class="title">MEIO DE PAGAMENTO</p>
+                <div class="flex flex-col -ml-4">
+                    <label>
+                        <input type="radio" class="nes-radio is-dark" name="payment-method" checked />
+                        <span>Cartão de crédito</span>
+                    </label>
+                    <label>
+                        <input type="radio" class="nes-radio is-dark" name="payment-method" />
+                        <span>Boleto bancário</span>
+                    </label>
+                    <label>
+                        <input type="radio" class="nes-radio is-dark" name="payment-method" />
+                        <span>Pix</span>
+                    </label>
                 </div>
             </div>
-        
-            <div class="nes-container is-dark with-title is-rounded">
-                <p class="title">VALE-PRESENTE</p>
-                <div class="px-2 pb-2">
-                    <div class="nes-field is-inline gap-2">
-                        <input id="cpf" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none flex-[1_!important]" placeholder="CPF">
-                        <input id="name" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Nome">
+
+            <div class="flex w-full">
+                <div class="nes-container is-dark with-title is-rounded flex-1">
+                    <p class="title">VALE-PRESENTE</p>
+                    <div class="nes-field is-inline gap-2 px-2 pb-2">
+                        <input id="cpf" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Código">
+                        <button class="nes-btn is-primary">OK</button>
+                    </div>  
+                </div>
+                <div class="nes-container is-dark with-title is-rounded flex-1">
+                    <p class="title">CUPOM</p>
+                    <div class="nes-field is-inline gap-2 px-2 pb-2">
+                        <input id="cpf" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Código">
+                        <button class="nes-btn is-primary">OK</button>
                     </div>  
                 </div>
             </div>
         </div>
 
-        <div class="nes-container is-dark with-title is-rounded">
-            <p class="title">CUPOM</p>
-            <div class="px-2 pb-2">
-                <div class="nes-field is-inline">
-                    <input id="frete"type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="XXXXX-XXX">
-                    <button class="nes-btn is-primary"><img src="{% static 'icons/search.svg' %}" alt="Pesquisar"/></button>
-                </div>
+        <div class="nes-container is-dark with-title is-rounded flex-1">
+            <p class="title">PRODUTOS</p>
+            <div class="px-2 pb-2 w-full">
+                <p class="text-sm">SUBTOTAL</p>
+                <p>TOTAL</p>
             </div>
         </div>
     </section>
@@ -117,11 +124,9 @@
                 </div>
                 <p class="mt-7">Seu Pedido foi concluído com Sucesso</P>
                 <p class="text-sm mt-2 mb-7">Em breve, ele chega na sua casa.</P>
-                <a href="{% url 'my_profile' %}">
-                    <button class="nes-btn flex items-center gap-2">
-                        <img class="w-7 -mt-1" src="{% static 'gifs/star.gif' %}" alt="Star" />
-                        <span>VER PEDIDO</span>
-                    </button>
+                <a href="{% url 'my_profile' %}" class="nes-btn flex items-center gap-2">
+                    <img class="w-7 -mt-1" src="{% static 'gifs/star.gif' %}" alt="Star" />
+                    <span>VER PEDIDO</span>
                 </a>
             </div>
         </div>

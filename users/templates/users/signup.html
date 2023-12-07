@@ -7,39 +7,62 @@
     {% load static %}
 
     <section class="flex justify-center w-full mt-8">
-        <div class="nes-container is-dark with-title is-centered is-rounded relative w-[50rem]">
+        <form method="post" class="nes-container is-dark with-title is-centered is-rounded relative w-[50rem]">
             <p class="title">CADASTRO</p>
             <img class="mx-auto my-10 relative z-10 w-40" src="{% static "gifs/yoshi2.gif" %}" alt="Yoshi" />
             <div class="flex flex-col gap-4 px-4 mt-4">
+                {% csrf_token %} 
                 <div class="flex">
                     <div class="nes-field is-inline">
                         <img class="w-14 -ml-2 mr-1" src="{% static "gifs/mario.gif" %}" />
                         <div class="flex gap-4">
-                            <input id="cpf" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="CPF">
-                            <input id="name" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Nome Completo">
+                            <input id="username" name="username" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Username">
+                            <input id="name" name="name" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Nome Completo">
                         </div>
                     </div>
                 </div>
                 <div class="nes-field is-inline">
                     <img class="w-[2.75rem] mr-2" src="{% static "gifs/mail.gif" %}" />
-                    <input id="email" type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="E-mail">
+                    <input id="email" type="text" name="email" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="E-mail">
                 </div>
                 <div class="flex">
                     <div class="nes-field is-inline">
                         <img class="w-10 mr-2" src="{% static "gifs/key.gif" %}" />
                         <div class="flex gap-4">
-                            <input id="password" type="password" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Senha">
-                            <input id="password2" type="password" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Confirme a Senha">
+                            <input id="password" name="password" type="password" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Senha">
+                            <input id="password2" name="password2" type="password" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Confirme a Senha">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex justify-center gap-10 py-7">
-                <a class="nes-btn is-primary flex items-center gap-2" href="#"><img class="w-7" src="{% static "gifs/egg.gif" %}" alt="Yoshi Egg" />Cadastrar</a>
+                <button type="submit" class="nes-btn is-primary flex items-center gap-2"><img class="w-7" src="{% static "gifs/egg.gif" %}" alt="Yoshi Egg" />Cadastrar</button>
                 <a class="nes-btn flex items-center" href="{% url "login" %}">Entrar</a>
             </div>
             <div class="w-full h-28 opacity-70 top-10 left-0 bg-[length:400px] absolute" style="background-image: url({% static "gifs/cloud.gif" %})"></div>
-        </div>
+        </form>
     </section>
+
+    <section>
+        <dialog class="nes-dialog is-dark is-rounded" id="error">
+            <form method="dialog is-centered">
+              <p class="title text-center py-2">ERRO</p>
+              <p id="err_msg"></p>
+              <menu class="dialog-menu flex mt-4">
+                <button class="nes-btn is-error mx-auto">Fechar</button>
+              </menu>
+            </form>
+          </dialog>
+    </section>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+
+        if (error) {
+            document.getElementById('error').showModal();
+            document.getElementById('err_msg').innerText = error
+        }
+    </script>
 
 {% endblock %}

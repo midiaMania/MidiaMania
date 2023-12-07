@@ -32,4 +32,24 @@
     </section>
 </form>
 
+<section>
+    <dialog class="nes-dialog is-dark is-rounded" id="success">
+        <form method="dialog is-centered">
+          <p class="title text-center py-2">Cadastro realizado com sucesso!</p>
+          <menu class="dialog-menu flex mt-4">
+            <button class="nes-btn is-success mx-auto">Fechar</button>
+          </menu>
+        </form>
+      </dialog>
+</section>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('success');
+
+    if (error) {
+        document.getElementById('success').showModal();
+    }
+</script>
+
 {% endblock %}

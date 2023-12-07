@@ -1,4 +1,6 @@
-# Midia Mania Project
+<p align="center">
+  <img src="https://raw.githubusercontent.com/midiaMania/MidiaMania/b0c63ab80f1412584889cb09b274dce7497ab2ed/frontend/static/logo.svg?token=A74ZPD2HW4TE4HU7BEXS2ZLFNQIUG" alt="MidiaMania" />
+</p>
 
 ## 🚀 Sobre o Projeto
 

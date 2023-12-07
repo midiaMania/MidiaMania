@@ -1,4 +1,7 @@
+from django.db import IntegrityError
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.urls import reverse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 
@@ -86,6 +89,42 @@ class Logout(View):
         return redirect('home')
 
 
+class SignUp(View):
+    def get(self, request):
+        return render(request, "users/signup.html")
+    
+    def post(self,request):
+        name = request.POST.get('name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+        
+        if name == '':
+            return redirect(reverse("signup") + "?error=O Nome não pode ser vazio")
+        
+        if username == '':
+            return redirect(reverse("signup") + "?error=O Username não pode ser vazio")
+        
+        if password != password2:
+            return redirect(reverse("signup") + "?error=As senhas não são iguais")
+        
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            
+            first_name, *last_name= name.split(" ", 1)
+            user.first_name = first_name
+            if last_name:
+                user.last_name = last_name[0]
+            user.email = email
+            user.save()
+            
+            return redirect(reverse("login") + "?success=true")
+        except IntegrityError:
+            return redirect(reverse("signup") + "?error=O Username já está em uso")
+        except Exception as e:
+            return redirect(reverse("signup") + f"?error={e}")
+    
 
 def signup(request):
     return render(request, "users/signup.html")

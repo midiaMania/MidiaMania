@@ -4,55 +4,66 @@ from django.contrib.auth import authenticate, login, logout
 
 class My_profile(View):
     context= {
-        'user':
-        {
-            'name': "Joe",
-            'username': "Joe",
-            'email': "joe@joe.com",
-            'phone_number': "123",
-            'shopping':[
-                {
-                    'type':'Música',
-                    'name': "The Beatles",
-                    'price': "{:,.2f}".format(5).replace('.', ','),
-                    'img': "musics/images/2.jpg",
-                    'date': '13/04/2020'
-                },
-                {
-                    'type': 'Filme',
-                    'name': "MIB",
-                    'price': "{:,.2f}".format(14).replace('.', ','),
-                    'img': "movies/images/2.jpg",
-                    'date': '13/04/2020'
-                },
-                {
-                    'type':'Jogo',
-                    'name': "Watch Dogs",
-                    'price': "{:,.2f}".format(40).replace('.', ','),
-                    'img': "games/images/3.jpg",
-                    'date': '13/04/2020'
-                },
-            ]
-        }
+        'phone_number': "(99) 9 9999-9999",
+        'shopping':[
+            {
+                'type':'Música',
+                'name': "The Beatles",
+                'price': "{:,.2f}".format(5).replace('.', ','),
+                'img': "musics/images/2.jpg",
+                'date': '13/04/2020'
+            },
+            {
+                'type': 'Filme',
+                'name': "MIB",
+                'price': "{:,.2f}".format(14).replace('.', ','),
+                'img': "movies/images/2.jpg",
+                'date': '13/04/2020'
+            },
+            {
+                'type':'Jogo',
+                'name': "Watch Dogs",
+                'price': "{:,.2f}".format(40).replace('.', ','),
+                'img': "games/images/3.jpg",
+                'date': '13/04/2020'
+            },
+        ]
     }
 
     def get(self, request):
         if request.user.is_authenticated:
-            return render(request, "users/my_profile.html", self.context)
+            return render(request, "users/my_profile.html", {
+                'data': self.context,
+                'user': request.user
+            })
         else:
             return redirect('login')
 
     def post(self, request):
+        user = request.user
+        
         new_name = request.POST.get('name')
         new_username = request.POST.get('username')
         new_email = request.POST.get('email')
         new_phone_number = request.POST.get('phone_number')
         new_password = request.POST.get('password')
 
-        if new_username:
-            self.context['user']['username'] = new_username
-        if new_name:
-            self.context['user']['name'] = new_name
+        if new_name != '':
+            first_name, *last_name= new_name.split(" ", 1)
+            user.first_name = first_name
+            if last_name:
+                user.last_name = last_name[0]
+                
+        if new_username != '':
+            user.username = new_username
+            
+        if new_email != '':
+            user.email = new_email
+        
+        if new_password != '':
+            user.set_password(new_password)
+            
+        user.save()
         return redirect('my_profile')
 
 

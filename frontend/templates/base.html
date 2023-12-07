@@ -22,7 +22,9 @@
 		<header class="flex flex-col gap-4">
 			<div class="container mx-auto">
 				<div class="flex justify-between items-center p-7">
-					<button id="menuBtn" class="nes-btn bg-gray-300 w-14 h-14"><img src="{% static 'icons/menu.svg' %}" alt="Menu"/></button>
+					<a href="{% url 'my_profile' %}">
+						<button id="menuBtn" class="nes-btn bg-gray-300 w-14 h-14"><img src="{% static 'images/perfil.png' %}" alt="Menu"/></button>
+					</a>
 					<a href="{% url 'home' %}">
 						<img class="w-80 md:w-96 lg:w-[40rem]" src="{% static 'logo.svg' %}" alt="Logo"/>
 					</a>
@@ -33,7 +35,7 @@
 					<button class="nes-btn is-primary"><img src="{% static 'icons/search.svg' %}" alt="Pesquisar"/></button>
 				</div>
 			</div>
-			<nav id="menu" class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative">
+			<nav class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative">
 				<img class="absolute top-[-2.5rem] left-[10%] 2xl:left-[20%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>
 				<a class="hover:text-gray-500 {% block movies_menu %}{% endblock %}" href="{% url 'movies_by_category' %}">{% block movies_selected %}{% endblock %}Filmes</a>
 				<span>|</span>

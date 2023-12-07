@@ -117,10 +117,12 @@
                 </div>
                 <p class="mt-7">Seu Pedido foi concluído com Sucesso</P>
                 <p class="text-sm mt-2 mb-7">Em breve, ele chega na sua casa.</P>
-                <button class="nes-btn flex items-center gap-2">
-                    <img class="w-7 -mt-1" src="{% static 'gifs/star.gif' %}" alt="Star" />
-                    <span>VER PEDIDO</span>
-                </button>
+                <a href="{% url 'my_profile' %}">
+                    <button class="nes-btn flex items-center gap-2">
+                        <img class="w-7 -mt-1" src="{% static 'gifs/star.gif' %}" alt="Star" />
+                        <span>VER PEDIDO</span>
+                    </button>
+                </a>
             </div>
         </div>
     </section>

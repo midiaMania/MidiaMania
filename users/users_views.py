@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views import View
 
-def my_profile(request):
+class My_profile(View):
     context= {
         'user':
         {
@@ -8,10 +9,6 @@ def my_profile(request):
             'username': "Joe",
             'email': "joe@joe.com",
             'phone_number': "123",
-            'address':[
-                ['Centro', 'Rua 1', 25],
-                ['Areia Branca', 'Rua 2', 27],
-            ], 
             'shopping':[
                 {
                     'type':'Música',
@@ -34,11 +31,26 @@ def my_profile(request):
                     'img': "games/images/3.jpg",
                     'date': '13/04/2020'
                 },
-                
             ]
         }
     }
-    return render(request, "users/my_profile.html", context)
+
+    def get(self, request):
+        return render(request, "users/my_profile.html", self.context)
+
+    def post(self, request):
+        new_name = request.POST.get('name')
+        new_username = request.POST.get('username')
+        new_email = request.POST.get('email')
+        new_phone_number = request.POST.get('phone_number')
+        new_password = request.POST.get('password')
+
+        if new_username:
+            self.context['user']['username'] = new_username
+        if new_name:
+            self.context['user']['name'] = new_name
+        return redirect('my_profile')
+
 
 def login(request):
     return render(request, "users/login.html")

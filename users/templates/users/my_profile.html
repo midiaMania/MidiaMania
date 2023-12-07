@@ -39,12 +39,15 @@
       <i class="nes-ash"></i>    
     </div>
 
+<form method='post'>
+    {% csrf_token %}
+    {{ form }}
     <div class = "flex mb-5">
       <div class="nes-field is-inline container">
         <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Nome</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.name}} />
+        <input type="text" name='name' id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.name}} />
       </div>
       <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
@@ -54,7 +57,7 @@
         <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Usuário</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4 " placeholder={{user.username}} />
+        <input type="text" name='username' id="inline_field" class="nes-input is-warning bg-transparent border-4 " placeholder={{user.username}} />
       </div>
       <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
@@ -64,17 +67,18 @@
         <div class='w-[120px] flex justify-center'>
           <label for="inline_field">Email</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.email}} />
+        <input type="text" name='email' id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.email}} />
       </div>
       <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
+
 
     <div class = "flex mb-5">
       <div class="nes-field is-inline container">
         <div class='w-[120px] flex justify-center '>
           <label for="inline_field">Telefone</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.phone_number}} />
+        <input type="text" name='phone_number' id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder={{user.phone_number}} />
       </div>
       <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
@@ -84,16 +88,17 @@
         <div class='w-[120px] flex justify-center '>
           <label for="inline_field">Senha</label>
         </div>
-        <input type="text" id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder='**********' />
+        <input type="text" name='password' id="inline_field" class="nes-input is-warning bg-transparent border-4" placeholder='**********' />
       </div>
       <img class="w-8 h-8 ml-2 my-auto" src="{% static 'images/star.png' %}" alt="Star"/>
     </div>
 
 
     <div class='mt-10 ml-[60px] flex justify-center'>
-      <button type="button" class="nes-btn is-warning">Salvar</button>
+      <button type="submit" class="nes-btn is-warning">Salvar</button>
     </div>
   </div>
+</form>
 
   <div class='flex justify-center items-center'>
     <img class="w-[140px] h-[140px] ml-[150px]" src="{% static 'gifs/pikachu.gif' %}" alt="Pikachu"/>
@@ -111,11 +116,11 @@
   {%for item in user.shopping%}
     <div class='ml-[30px] flex'>
         <div class="flex nes-container is-rounded is-dark container">
-          <div class="border-double border-4 border-red-500 rounded-xl">
+          <div class="border-double border-4 border-red-700 rounded-xl">
             <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
           </div>
 
-          <div class='ml-[30px] my-auto text-red-500'>
+          <div class='ml-[30px] my-auto text-white'>
             <p class='mb-[10px]'>Tipo de mídia: {{item.type}}</p>
             <p class='mb-[10px]'>Nome da mídia: {{item.name}}</p>
             <p class='mb-[10px]'>Valor do item: R$ {{item.price}}</p>

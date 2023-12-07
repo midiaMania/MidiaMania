@@ -27,11 +27,11 @@
       <button id='menuProfileBtn_1' class="nes-btn is-warning w-full">Meus Dados</button>    
     </div>
     <div class="whitespace-nowrap mb-5">
-      <button id='menuProfileBtn_2' class="nes-btn is-error w-full">Meus Pedidos</button>
+      <button id='menuProfileBtn_2' class="nes-btn is-primary w-full">Meus Pedidos</button>
     </div>
     <div class="whitespace-nowrap mb-5">
       <a href="{% url 'logout' %}">
-        <button id='menuProfileBtn_2' class="nes-btn is-primary w-full">Logout</button>
+        <button id='menuProfileBtn_2' class="nes-btn is-error w-full">Logout</button>
       </a>
     </div>
   </div>
@@ -121,7 +121,7 @@
   {%for item in user.shopping%}
     <div class='ml-[30px] flex'>
         <div class="flex nes-container is-rounded is-dark container">
-          <div class="border-double border-4 border-red-700 rounded-xl">
+          <div class="border-double border-4 border-blue-400 rounded-xl">
             <img class='w-[100px] h-[140px]' src="{% static item.img %}" alt="Image"/>
           </div>
 
@@ -139,7 +139,7 @@
   </div>
 
   <div class='flex justify-center items-center'>
-    <img class="w-[140px] h-[120px] ml-[130px] mt-[100px]" src="{% static 'gifs/growlite.gif' %}" alt="Growlite"/>
+    <img class="w-[140px] h-[140px] ml-[130px] mt-[100px]" src="{% static 'gifs/sonic.gif' %}" alt="Sonic"/>
   </div>
 
 </div>

@@ -13,9 +13,9 @@ class My_profile(View):
             'shopping':[
                 {
                     'type':'Música',
-                    'name':'Kid Abelha',
-                    'price': "{:,.2f}".format(14).replace('.', ','),
-                    'img': "musics/images/1.jpg",
+                    'name': "The Beatles",
+                    'price': "{:,.2f}".format(5).replace('.', ','),
+                    'img': "musics/images/2.jpg",
                     'date': '13/04/2020'
                 },
                 {

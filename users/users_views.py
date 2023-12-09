@@ -81,7 +81,12 @@ class Login(View):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('my_profile')
+            redirect_url = request.session.get('cart_redirect', None)
+            if redirect_url:
+                del request.session['cart_redirect']
+                return redirect(redirect_url)
+            else:
+                return redirect('my_profile')
         else:
             messages.error(request, 'Usuário ou senha incorretos')
         return render(request, 'users/login.html')
@@ -162,5 +167,6 @@ def cart(request):
      if request.user.is_authenticated:
         return render(request, "users/cart.html", context)
      else:
-         return redirect('login')
+        request.session['cart_redirect'] = reverse('cart')
+        return redirect('login')
 

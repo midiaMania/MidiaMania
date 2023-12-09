@@ -1,180 +1,26 @@
 from django.shortcuts import render
+from .models import Category, Movie
 
 
 def movies_by_category(request):
+    categories = Category.objects.all()
+    movies_by_category = {}
+    for category in categories:
+        movies = category.movie_set.all()
+        movies_list = []
+        for movie in movies:
+            movies_list.append({
+                'name': movie.title,
+                'price': "{:,.2f}".format(movie.price).replace('.', ','),
+                'img': movie.img.url,
+                'slug': movie.slug
+        })
+        movies_by_category[category.name] = movies_list
+
     context = {
-        'action_movies': [
-            {
-                'name': "MIB",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/2.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Avengers: Endgame",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "movies/images/4.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Liga da Justiça",
-                'price': "{:,.2f}".format(22).replace('.', ','),
-                'img': "movies/images/5.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Harry Potter",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/6.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "MIB",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/2.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Avengers: Endgame",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "movies/images/4.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Liga da Justiça",
-                'price': "{:,.2f}".format(22).replace('.', ','),
-                'img': "movies/images/5.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Harry Potter",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/6.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "MIB",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/2.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Avengers: Endgame",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "movies/images/4.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Liga da Justiça",
-                'price': "{:,.2f}".format(22).replace('.', ','),
-                'img': "movies/images/5.jpg",
-                'slug': "action"
-            },
-            {
-                'name': "Harry Potter",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/6.jpg",
-                'slug': "action"
-            }
-        ],
-
-        'drama_movies': [
-            {
-                'name': "Titanic",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "movies/images/1.jpg",
-                'slug': "drama"
-            },
-            {
-                'name': "Interstellar",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "movies/images/3.png",
-                'slug': "drama"
-            },
-            {
-                'name': "Harry Potter",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/6.jpg",
-                'slug': "drama"
-            },
-            {
-                'name': "Titanic",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "movies/images/1.jpg",
-                'slug': "drama"
-            },
-            {
-                'name': "Interstellar",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "movies/images/3.png",
-                'slug': "drama"
-            },
-            {
-                'name': "Harry Potter",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/6.jpg",
-                'slug': "drama"
-            },
-            {
-                'name': "Titanic",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "movies/images/1.jpg",
-                'slug': "drama"
-            },
-            {
-                'name': "Interstellar",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "movies/images/3.png",
-                'slug': "drama"
-            },
-            {
-                'name': "Harry Potter",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/6.jpg",
-                'slug': "drama"
-            }
-        ],
-
-        'hero_movies': [
-            {
-                'name': "Avengers: Endgame",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "movies/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Liga da Justiça",
-                'price': "{:,.2f}".format(22).replace('.', ','),
-                'img': "movies/images/5.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Avengers: Endgame",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "movies/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Liga da Justiça",
-                'price': "{:,.2f}".format(22).replace('.', ','),
-                'img': "movies/images/5.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Avengers: Endgame",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "movies/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Liga da Justiça",
-                'price': "{:,.2f}".format(22).replace('.', ','),
-                'img': "movies/images/5.jpg",
-                'slug': "hero"
-            }
-        ]
+        'movies_by_category': movies_by_category
     }
-
+    
     return render(request, "movies/movies_by_category.html", context)
 
 

@@ -6,7 +6,7 @@ def get_image_upload_path(instance, filename):
     # Obtém a extensão do arquivo
     ext = filename.split('.')[-1]
     # Monta o caminho do arquivo com base no tipo e nome do produto
-    path = os.path.join('frontend', 'static', 'images', instance.product_type, f"{instance.product_name}.{ext}")
+    path = os.path.join('frontend', 'static', 'upload', instance.product_type, f"{instance.product_name}.{ext}")
     return path
 
 class UserProfile(models.Model):

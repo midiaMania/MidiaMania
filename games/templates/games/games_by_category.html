@@ -9,30 +9,33 @@
 
     {% load static %}
 
+    {% for category, games in games_by_category.items %}
+
+    {% if games %}
     <section class="py-4">
         <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/box.gif' %}" alt="Box"/>
-            <span class="mt-1 ml-2">Tiro</span>
+            <img class="w-10" src="{% static 'gifs/popcorn.gif' %}" alt="Popcorn"/>
+            <span class="mt-3">{{category}}</span>
         </a>
         <div class="relative">
-            <div id="fps-carousel" class="flex items-stretch overflow-hidden">
+            <div id="{{ category|lower }}-carousel" class="flex items-stretch overflow-hidden">
                 <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
-                    <button onclick="scrollToLeft('fps-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
+                    <button onclick="scrollToLeft('{{ category|lower }}-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
                         <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
                     </button>
                 </div>
 
                 <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
-                    <button onclick="scrollToRight('fps-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
+                    <button onclick="scrollToRight('{{ category|lower }}-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
                         <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
                     </button>
                 </div>
 
-                {% for game in fps_games %}
-                    <div class="nes-container is-rounded is-dark text-center flex flex-col">
+                {% for game in games %}
+                    <div class="nes-container is-rounded is-dark text-center items-center flex flex-col">
                         <p class="mb-1 flex-1 flex items-center justify-center">{{ game.name }}</p>
-                        <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
+                        <div class="flex items-center flex-col items-stretch w-64 h-80">
+                            <img class="w-full h-full" src="{{ game.img|cut:'frontend/'}}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ game.price }}</p>
                         <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
@@ -41,71 +44,8 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
-    <section class="py-4">
-        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/box.gif' %}" alt="Box"/>
-            <span class="mt-1 ml-2">Fantasia</span>
-        </a>
-        <div class="relative">
-            <div id="fantasy-carousel" class="flex items-stretch overflow-hidden">
-                <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
-                    <button onclick="scrollToLeft('fantasy-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
-                    </button>
-                </div>
-
-                <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
-                    <button onclick="scrollToRight('fantasy-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
-                    </button>
-                </div>
-
-                {% for game in fantasy_games %}
-                    <div class="nes-container is-rounded is-dark text-center flex flex-col">
-                        <p class="mb-1 flex-1 flex items-center justify-center">{{ game.name }}</p>
-                        <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
-                        </div>
-                        <p class="text-xl my-1">R$ {{ game.price }}</p>
-                        <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <section class="py-4">
-        <a class="flex items-center w-fit hover:text-amber-300" href="{% url 'games_by_category' %}">
-            <img class="w-10" src="{% static 'gifs/box.gif' %}" alt="Box"/>
-            <span class="mt-1 ml-2">Super Héroi</span>
-        </a>
-        <div class="relative">
-            <div id="hero-carousel" class="flex items-stretch overflow-hidden">
-                <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
-                    <button onclick="scrollToLeft('hero-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
-                    </button>
-                </div>
-
-                <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
-                    <button onclick="scrollToRight('hero-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
-                    </button>
-                </div>
-
-                {% for game in hero_games %}
-                    <div class="nes-container is-rounded is-dark text-center flex flex-col">
-                        <p class="mb-1 flex-1 flex items-center justify-center">{{ game.name }}</p>
-                        <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
-                        </div>
-                        <p class="text-xl my-1">R$ {{ game.price }}</p>
-                        <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
+    {% endfor %}
 
 {% endblock %}

@@ -1,172 +1,23 @@
 from django.shortcuts import render
-
+from .models import Category, Music
 
 def musics_by_category(request):
+    categories = Category.objects.all()
+    musics_by_category = {}
+    for category in categories:
+        musics = category.music_set.all()
+        musics_list = []
+        for music in musics:
+            musics_list.append({
+                'name': music.name,
+                'price': "{:,.2f}".format(music.price).replace('.', ','),
+                'img': music.image.url,
+                'slug': music.slug
+        })
+        musics_by_category[category.name] = musics_list
+
     context = {
-        'pop_musics': [
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Michael Jackson",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "musics/images/5.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Michael Jackson",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "musics/images/5.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Michael Jackson",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "musics/images/5.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Michael Jackson",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "musics/images/5.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "pop"
-            },
-            {
-                'name': "Michael Jackson",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "musics/images/5.jpg",
-                'slug': "pop"
-            },
-        ],
-
-        'rock_musics': [
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "The Beatles",
-                'price': "{:,.2f}".format(5).replace('.', ','),
-                'img': "musics/images/2.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "Linkin Park",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "musics/images/4.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "The Beatles",
-                'price': "{:,.2f}".format(5).replace('.', ','),
-                'img': "musics/images/2.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "Linkin Park",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "musics/images/4.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "Kid Abelha",
-                'price': "{:,.2f}".format(4).replace('.', ','),
-                'img': "musics/images/1.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "The Beatles",
-                'price': "{:,.2f}".format(5).replace('.', ','),
-                'img': "musics/images/2.jpg",
-                'slug': "rock"
-            },
-            {
-                'name': "Linkin Park",
-                'price': "{:,.2f}".format(10).replace('.', ','),
-                'img': "musics/images/4.jpg",
-                'slug': "rock"
-            },
-        ],
-
-        'metal_musics': [
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-            {
-                'name': "Iron Maiden",
-                'price': "{:,.2f}".format(7).replace('.', ','),
-                'img': "musics/images/3.jpg",
-                'slug': "metal"
-            },
-        ],
+        'musics_by_category': musics_by_category
     }
     return render(request, "musics/musics_by_category.html", context)
 

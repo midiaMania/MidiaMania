@@ -1,172 +1,24 @@
 from django.shortcuts import render
+from .models import Category, Game
 
 
 def games_by_category(request):
+    categories = Category.objects.all()
+    games_by_category = {}
+    for category in categories:
+        games = category.game_set.all()
+        games_list = []
+        for game in games:
+            games_list.append({
+                'name': game.title,
+                'price': "{:,.2f}".format(game.price).replace('.', ','),
+                'img': game.image.url,
+                'slug': game.slug
+        })
+        games_by_category[category.name] = games_list
+
     context = {
-        'fps_games': [
-            {
-                'name': "Doom",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "games/images/2.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Watch Dogs",
-                'price': "{:,.2f}".format(40).replace('.', ','),
-                'img': "games/images/3.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Red Alert 3",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "games/images/6.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Doom",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "games/images/2.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Watch Dogs",
-                'price': "{:,.2f}".format(40).replace('.', ','),
-                'img': "games/images/3.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Red Alert 3",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "games/images/6.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Doom",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "games/images/2.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Watch Dogs",
-                'price': "{:,.2f}".format(40).replace('.', ','),
-                'img': "games/images/3.jpg",
-                'slug': "fps"
-            },
-            {
-                'name': "Red Alert 3",
-                'price': "{:,.2f}".format(20).replace('.', ','),
-                'img': "games/images/6.jpg",
-                'slug': "fps"
-            },
-        ],
-
-        'fantasy_games': [
-            {
-                'name': "Zelda",
-                'price': "{:,.2f}".format(140).replace('.', ','),
-                'img': "games/images/1.jpeg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Assassin's Creed",
-                'price': "{:,.2f}".format(50).replace('.', ','),
-                'img': "games/images/5.jpg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Zelda",
-                'price': "{:,.2f}".format(140).replace('.', ','),
-                'img': "games/images/1.jpeg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Assassin's Creed",
-                'price': "{:,.2f}".format(50).replace('.', ','),
-                'img': "games/images/5.jpg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Zelda",
-                'price': "{:,.2f}".format(140).replace('.', ','),
-                'img': "games/images/1.jpeg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "fantasy"
-            },
-            {
-                'name': "Assassin's Creed",
-                'price': "{:,.2f}".format(50).replace('.', ','),
-                'img': "games/images/5.jpg",
-                'slug': "fantasy"
-            },
-        ],
-
-        'hero_games': [
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-            {
-                'name': "Spider-man",
-                'price': "{:,.2f}".format(120).replace('.', ','),
-                'img': "games/images/4.jpg",
-                'slug': "hero"
-            },
-        ],
+        'games_by_category': games_by_category
     }
 
     return render(request, "games/games_by_category.html", context)

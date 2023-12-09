@@ -29,7 +29,7 @@
                     <div class="nes-container is-rounded is-dark text-center flex flex-col">
                         <p class="mb-1 flex-1 flex items-center justify-center">{{ movie.name }}</p>
                         <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{% static movie.img %}" alt="Image 1"/>
+                            <img class="w-full h-full" src="{{ movie.img|cut:'frontend/'}}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ movie.price }}</p>
                         <a href="{% url 'movie_details' movie.slug  %}" class="nes-btn is-primary w-full">VER</a>
@@ -62,7 +62,7 @@
                     <div class="nes-container is-rounded is-dark text-center flex flex-col">
                         <p class="mb-1 flex-1 flex items-center justify-center">{{ game.name }}</p>
                         <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{% static game.img %}" alt="Image 1"/>
+                            <img class="w-full h-full" src="{{ game.img|cut:'frontend/'}}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ game.price }}</p>
                         <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
@@ -95,7 +95,7 @@
                     <div class="nes-container is-rounded is-dark text-center flex flex-col">
                         <p class="mb-1 flex-1 flex items-center justify-center">{{ music.name }}</p>
                         <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{% static music.img %}" alt="Image 1"/>
+                            <img class="w-full h-full" src="{{ music.img|cut:'frontend/'}}" alt="Image 1"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ music.price }}</p>
                         <a href="{% url 'music_details' music.slug  %}" class="nes-btn is-primary w-full">VER</a>

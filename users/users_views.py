@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 class My_profile(View):
     context= {
@@ -81,7 +82,9 @@ class Login(View):
         if user is not None:
             login(request, user)
             return redirect('my_profile')
-        return redirect('login')
+        else:
+            messages.error(request, 'Usuário ou senha incorretos')
+        return render(request, 'users/login.html')
 
 class Logout(View):
     def get(self, request):

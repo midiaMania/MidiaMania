@@ -27,6 +27,14 @@
                 <button type="submit" class="nes-btn is-primary">Entrar</button>
                 <a class="nes-btn" href="{% url "signup" %}">Cadastre-se</a>
             </div>
+            {% if messages %}
+            <div class='text-red-500'>
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
             <div class="w-full h-28 opacity-70 top-10 left-0 bg-[length:400px] absolute" style="background-image: url({% static "gifs/cloud.gif" %})"></div>
         </div>
     </section>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Página não encontrada{% endblock %}
+
+{% block content %}
+    {% load static %}
+
+    <section class="w-full pt-10 relative">
+        <h1 class="text-center">Página não encontrada</h1>
+        <img class="w-96 mx-auto" src="{% static 'gifs/404.gif' %}" alt="404"/>
+    </section>
+{% endblock %}

@@ -23,7 +23,14 @@
 					<a href="{% url 'home' %}">
 						<img class="w-80 md:w-96 lg:w-[40rem]" src="{% static 'logo.svg' %}" alt="Logo"/>
 					</a>
-					<a class="nes-btn bg-gray-300 w-14 h-14" href="{% url 'cart' %}"><img src="{% static 'icons/cart.svg' %}" alt="Carrinho"/></a>
+					<a class="nes-btn bg-gray-300 w-14 h-14 relative" href="{% url 'cart' %}">
+						{% if amount_cart != 0 %}
+							<div class="absolute bg-amber-400 right-0 top-0 -mt-4 -mr-4 text-sm z-10 p-1 rounded-full">
+								<span class="is-warning">{{amount_cart}}</span>
+							</div>
+						{% endif %}
+						<img src="{% static 'icons/cart.svg' %}" alt="Carrinho"/>
+					</a>
 				</div>
 				<form method="get" action="{% url 'search' %}" class="nes-field is-inline w-full md:w-2/3 lg:w-1/2 mx-auto">
 					<input type="text" name="q" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Pesquisar...">

@@ -7,18 +7,18 @@
     
     <section class="flex flex-col items-center md:flex-row md:items-start py-7 gap-10">
         <div class="relative w-96">
-            <img class="w-96" src="{% static img %}" alt="Capa"/>
+            <img class="w-96" src="{{ music.img|cut:'frontend' }}" alt="Capa"/>
             <img class="w-24 absolute right-0 bottom-0" src="{% static 'gifs/spongebob.gif' %}" alt="Bob Esponja"/>
         </div>
 
         <div class="flex-1">
             <div class="flex items-center gap-2">
                 <img class="w-14" src="{% static 'gifs/k7.gif' %}" alt="K7"/>
-                <h1 class="text-2xl">{{ title }}</h1>
+                <h1 class="text-2xl">{{ music.title }}</h1>
             </div>
 
             <div class="flex gap-4 pt-4">
-                {% for categorie in categories %}
+                {% for categorie in music.categories.all %}
                     <a href="#" class="nes-badge">
                         <span class="is-warning">{{ categorie }}</span>
                     </a>
@@ -35,7 +35,7 @@
 
             <div class="flex flex-col gap-4">
                 <p class="text-sm">Valor:</p>
-                <p class="text-4xl text-amber-300">R$ {{ price }}</p>
+                <p class="text-4xl text-amber-300">R$ {{ music.price }}</p>
             </div>
 
             <span class="flex gap-4 mt-2 items-center">
@@ -52,12 +52,12 @@
         </div>
 
         <div class="flex flex-col gap-2 mt-4 text-md">
-            <p>Título: {{ title }}</p>
-            <p>Artista: {{ artist }}</p>
-            <p>Formato: {{ format }}</p>
+            <p>Título: {{ music.title }}</p>
+            <p>Artista: {{ music.artist }}</p>
+            <p>Formato: {{ music.format }}</p>
             <p>Nº de Faixas: {{ num_tracks }}</p>
-            <p>Gravadora: {{ record_label }}</p>
-            <p>Lançamento: {{ release_date }}</p>
+            <p>Gravadora: {{ music.record_label }}</p>
+            <p>Lançamento: {{ music.release_date }}</p>
         </div>
 
     </section>
@@ -69,8 +69,8 @@
         </div>
 
         <ol class="list-decimal ml-20 mt-4">
-            {% for track in tracks %}
-                <li class="text-amber-400">{{ track }}</li>
+            {% for track in music.track_set.all %}
+                <li class="text-amber-400">{{ track.title }} <span class="text-gray-300">({{ track.duration }})</span></li>
             {% endfor %}
         </ol>
 

@@ -15,21 +15,21 @@
             <div id="movies-carousel" class="flex items-stretch overflow-hidden">
                 <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
                     <button onclick="scrollToLeft('movies-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
+                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Previous"/>
                     </button>
                 </div>
 
                 <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
                     <button onclick="scrollToRight('movies-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
+                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Next"/>
                     </button>
                 </div>
 
                 {% for movie in movies %}
                     <div class="nes-container is-rounded is-dark text-center flex flex-col">
-                        <p class="mb-1 flex-1 flex items-center justify-center">{{ movie.name }}</p>
+                        <p class="mb-1 flex-1 flex items-center justify-center">{{ movie.title }}</p>
                         <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{{ movie.img|cut:'frontend/'}}" alt="Image 1"/>
+                            <img class="w-full h-full" src="{{ movie.img|cut:'frontend'}}" alt="{{ movie.title }}" />
                         </div>
                         <p class="text-xl my-1">R$ {{ movie.price }}</p>
                         <a href="{% url 'movie_details' movie.slug  %}" class="nes-btn is-primary w-full">VER</a>
@@ -48,21 +48,21 @@
             <div id="games-carousel" class="flex items-stretch overflow-hidden">
                 <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
                     <button onclick="scrollToLeft('games-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
+                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Previous"/>
                     </button>
                 </div>
 
                 <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
                     <button onclick="scrollToRight('games-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
+                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Next"/>
                     </button>
                 </div>
 
                 {% for game in games %}
                     <div class="nes-container is-rounded is-dark text-center flex flex-col">
-                        <p class="mb-1 flex-1 flex items-center justify-center">{{ game.name }}</p>
+                        <p class="mb-1 flex-1 flex items-center justify-center">{{ game.title }}</p>
                         <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{{ game.img|cut:'frontend/'}}" alt="Image 1"/>
+                            <img class="w-full h-full" src="{{ game.img|cut:'frontend'}}" alt="{{ game.title }}"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ game.price }}</p>
                         <a href="{% url 'game_details' game.slug  %}" class="nes-btn is-primary w-full">VER</a>
@@ -81,21 +81,21 @@
             <div id="musics-carousel" class="flex items-stretch overflow-hidden">
                 <div class="absolute z-10 left-0 top-0 bottom-0 flex items-center">
                     <button onclick="scrollToLeft('musics-carousel')" class="w-14 h-14 -ml-3 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Image 1"/>
+                        <img class="mx-auto" src="{% static 'icons/arrow-left.svg' %}" alt="Previous" />
                     </button>
                 </div>
 
                 <div class="absolute z-10 right-0 top-0 bottom-0 flex items-center">
                     <button onclick="scrollToRight('musics-carousel')" class="w-14 h-14 -mr-7 rounded-full bg-gray-400">
-                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Image 1"/>
+                        <img class="mx-auto" src="{% static 'icons/arrow-right.svg' %}" alt="Next" />
                     </button>
                 </div>
 
                 {% for music in musics %}
                     <div class="nes-container is-rounded is-dark text-center flex flex-col">
-                        <p class="mb-1 flex-1 flex items-center justify-center">{{ music.name }}</p>
+                        <p class="mb-1 flex-1 flex items-center justify-center">{{ music.title }}</p>
                         <div class="flex flex-col items-stretch w-64 h-80">
-                            <img class="w-full h-full" src="{{ music.img|cut:'frontend/'}}" alt="Image 1"/>
+                            <img class="w-full h-full" src="{{ music.img|cut:'frontend'}}" alt="{{ music.title }}"/>
                         </div>
                         <p class="text-xl my-1">R$ {{ music.price }}</p>
                         <a href="{% url 'music_details' music.slug  %}" class="nes-btn is-primary w-full">VER</a>

@@ -33,7 +33,7 @@
                         <div class="nes-container is-rounded is-dark text-center items-center flex flex-col">
                             <p class="mb-1 flex-1 flex items-center justify-center">{{ music.title }}</p>
                             <div class="flex items-center flex-col w-64 h-80">
-                                <img class="w-full h-full" src="{{ music.img|cut:'frontend'}}" alt="{{ music.title }}"/>
+                                <img class="w-full h-full rounded-lg" src="{{ music.img|cut:'frontend'}}" alt="{{ music.title }}"/>
                             </div>
                             <p class="text-xl my-1">R$ {{ music.price }}</p>
                             <a href="{% url 'music_details' music.slug  %}" class="nes-btn is-primary w-full">VER</a>

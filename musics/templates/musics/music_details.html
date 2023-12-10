@@ -7,8 +7,9 @@
     
     <section class="flex flex-col items-center md:flex-row md:items-start py-7 gap-10">
         <div class="relative w-96">
-            <img class="w-96" src="{{ music.img|cut:'frontend' }}" alt="Capa"/>
-            <img class="w-24 absolute right-0 bottom-0" src="{% static 'gifs/spongebob.gif' %}" alt="Bob Esponja"/>
+            <img class="w-96 rounded-xl" src="{{ music.img|cut:'frontend' }}" alt="Capa"/>
+            <img class="w-24 absolute right-0 bottom-0" src="{% static 'gifs/mario2.gif' %}" alt="Mario"/>
+            <img class="w-24 absolute left-0 top-0 -mt-16" src="{% static 'gifs/spongebob.gif' %}" alt="Bob Esponja"/>
         </div>
 
         <div class="flex-1">

@@ -9,11 +9,6 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-		<style>
-			.hidden-menu {
-				display: none !important;
-			}
-		</style>
 		{% tailwind_css %}
 	</head>
 
@@ -30,10 +25,10 @@
 					</a>
 					<a class="nes-btn bg-gray-300 w-14 h-14" href="{% url 'cart' %}"><img src="{% static 'icons/cart.svg' %}" alt="Carrinho"/></a>
 				</div>
-				<div class="nes-field is-inline w-full md:w-2/3 lg:w-1/2 mx-auto">
-					<input type="text" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Pesquisar...">
-					<button class="nes-btn is-primary"><img src="{% static 'icons/search.svg' %}" alt="Pesquisar"/></button>
-				</div>
+				<form method="get" action="{% url 'search' %}" class="nes-field is-inline w-full md:w-2/3 lg:w-1/2 mx-auto">
+					<input type="text" name="q" class="nes-input rounded-lg px-4 py-3 bg-gray-200 text-gray-900 focus:ring-cyan-400 focus:ring-2 border-none" placeholder="Pesquisar...">
+					<button type="submit" class="nes-btn is-primary"><img src="{% static 'icons/search.svg' %}" alt="Pesquisar"/></button>
+				</form>
 			</div>
 			<nav class="flex justify-center items-center gap-20 bg-amber-400 text-black py-2 relative">
 				<img class="absolute top-[-2.5rem] left-[10%] 2xl:left-[20%] w-32" src="{% static 'gifs/among3.gif' %}" alt="Gif"/>

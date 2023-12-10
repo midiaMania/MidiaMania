@@ -7,7 +7,7 @@
     
     <section class="flex flex-col items-center md:flex-row md:items-start py-7 gap-10">
         <div class="relative w-96">
-            <img class="w-96" src="{{ movie.img|cut:'frontend' }}" alt="Capa"/>
+            <img class="w-96 rounded-xl" src="{{ movie.img|cut:'frontend' }}" alt="Capa"/>
             <img class="w-14 absolute top-0" src="{% static 'gifs/spider-man.gif' %}" alt="Spider-man"/>
             <img class="w-14 absolute right-0 bottom-0" src="{% static 'gifs/toad.gif' %}" alt="Sapo"/>
         </div>

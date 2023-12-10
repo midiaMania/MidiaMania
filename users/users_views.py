@@ -1,10 +1,14 @@
 from django.db import IntegrityError
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .models import ShoppingCartItem
+from movies.models import Movie
+from musics.models import Music
+from games.models import Game
 
 class My_profile(View):
     context= {
@@ -141,32 +145,75 @@ def checkout(request):
     return render(request, "users/checkout.html")
 
 def cart(request):
-     context= {
-                'cart':[
-                    {
-                        'type': 'Filme',
-                        'name': "MIB",
-                        'price': "{:,.2f}".format(14).replace('.', ','),
-                        'img': "movies/images/2.jpg",
-                    },
-                    {
-                        'type':'Jogo',
-                        'name': "Watch Dogs",
-                        'price': "{:,.2f}".format(40).replace('.', ','),
-                        'img': "games/images/3.jpg",
-                    },
-                    {
-                        'type':'Música',
-                        'name':'Kid Abelha',
-                        'price': "{:,.2f}".format(14).replace('.', ','),
-                        'img': "musics/images/1.jpg",
-                    },
-                ],
-                'total_price': "{:,.2f}".format(68).replace('.', ','),
-            }
      if request.user.is_authenticated:
+        cart_items = ShoppingCartItem.objects.filter(user=request.user, purchase_date__isnull=True)
+        if request.method == 'POST':
+            item_id = request.POST.get('item_id')
+            if item_id:
+                ShoppingCartItem.objects.filter(id=item_id, user=request.user).delete()
+                return redirect('cart')
+        context = {
+            'cart': [
+                {
+                    'id': item.id,
+                    'type': item.product_type,
+                    'name': item.product_name,
+                    'price': "{:,.2f}".format(item.product_price).replace('.', ','),
+                    'img': item.product_image.url,
+                }
+                for item in cart_items
+            ],
+            'total_price': "{:,.2f}".format(sum(item.product_price for item in cart_items)).replace('.', ','),
+        }        
         return render(request, "users/cart.html", context)
      else:
         request.session['cart_redirect'] = reverse('cart')
         return redirect('login')
+     
+def add_movie_to_cart(request, slug):
+    if request.user.is_authenticated:
+        movie = get_object_or_404(Movie, slug=slug)
+        cart_item = ShoppingCartItem.objects.create(
+            user=request.user,
+            product_type='Filme',
+            product_name=movie.title,
+            product_price=movie.price,
+            product_image=movie.img,
+        )
+    else:
+        request.session['cart_redirect'] = reverse('add_movie_to_cart', args=[slug])
+        return redirect('login')
 
+    return redirect('movie_details', slug=slug)
+
+def add_music_to_cart(request, slug):
+    if request.user.is_authenticated:
+        music = get_object_or_404(Music, slug=slug)
+        cart_item = ShoppingCartItem.objects.create(
+            user=request.user,
+            product_type='Música',
+            product_name=music.title,
+            product_price=music.price,
+            product_image=music.img,
+        )
+    else:
+        request.session['cart_redirect'] = reverse('add_music_to_cart', args=[slug])
+        return redirect('login')
+
+    return redirect('music_details', slug=slug)
+
+def add_game_to_cart(request, slug):
+    if request.user.is_authenticated:
+        game = get_object_or_404(Game, slug=slug)
+        cart_item = ShoppingCartItem.objects.create(
+            user=request.user,
+            product_type='Jogo',
+            product_name=game.title,
+            product_price=game.price,
+            product_image=game.img,
+        )
+    else:
+        request.session['cart_redirect'] = reverse('add_game_to_cart', args=[slug])
+        return redirect('login')
+
+    return redirect('game_details', slug=slug)

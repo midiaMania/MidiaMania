@@ -40,9 +40,11 @@
 
             <span class="flex gap-4 mt-2 items-center">
                 <button class="nes-btn is-primary mt-4 py-3 px-10">Comprar</button>
-                <button class="nes-btn is-error mt-4 py-3 px-10">
-                    <img class='h-[25px]' src="{% static 'icons/cart.svg' %}" alt="Carrinho"/>
-                </button>
+                <a href="{% url 'add_music_to_cart' slug=music.slug %}">
+                    <button class="nes-btn is-error mt-4 py-3 px-10">
+                        <img class='h-[25px]' src="{% static 'icons/cart.svg' %}" alt="Carrinho"/>
+                    </button>
+                </a>
                 <img class="w-14 mt-2" src="{% static 'gifs/music2.gif' %}" alt="Music"/>
             </span>
         </div>

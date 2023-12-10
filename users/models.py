@@ -29,7 +29,7 @@ class ShoppingCartItem(models.Model):
     product_name = models.CharField(max_length=255)
     product_price = models.DecimalField(max_digits=10, decimal_places=2)
     product_image = models.ImageField(upload_to=get_image_upload_path)
-    purchase_date = models.DateField()
+    purchase_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.product_name} - {self.user.username}"

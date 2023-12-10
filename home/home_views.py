@@ -3,6 +3,8 @@ from movies.models import Movie
 from games.models import Game
 from musics.models import Music
 
+def error404(request, exception):
+    return render(request, '404.html', status=404)
 
 def home(request):
     movies = Movie.objects.all()[:10]
@@ -25,7 +27,7 @@ def home(request):
             games_list.append({
                 'name': game.title,
                 'price': "{:,.2f}".format(game.price).replace('.', ','),
-                'img': game.image.url,
+                'img': game.img.url,
                 'slug': game.slug
         })
             
@@ -33,7 +35,7 @@ def home(request):
             musics_list.append({
                 'name': music.name,
                 'price': "{:,.2f}".format(music.price).replace('.', ','),
-                'img': music.image.url,
+                'img': music.img.url,
                 'slug': music.slug
         })
             

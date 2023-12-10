@@ -7,7 +7,7 @@
     
     <section class="flex flex-col items-center md:flex-row md:items-start py-7 gap-10">
         <div class="relative w-96">
-            <img class="w-96" src="{% static img %}" alt="Capa"/>
+            <img class="w-96 rounded-xl" src="{{ game.img|cut:'frontend' }}" alt="Capa"/>
             <img class="w-full absolute bottom-0 right-0" src="{% static 'gifs/battle.gif' %}" alt="Naruto"/>
             <img class="w-14 absolute -top-14 left-0" src="{% static 'gifs/itachi.gif' %}" alt="Itachi"/>
             <img class="w-14 absolute bottom-20 right-0 -scale-x-100" src="{% static 'gifs/gaara.gif' %}" alt="Gaara"/>
@@ -16,14 +16,14 @@
         <div class="flex-1">
             <div class="flex items-center gap-2">
                 <img class="w-7" src="{% static 'gifs/pacman.gif' %}" alt="Pacman"/>
-                <h1 class="text-2xl">{{ title }}</h1>
+                <h1 class="text-2xl">{{ game.title }}</h1>
             </div>
 
             <div class="flex flex-col gap-2 mt-4">
                 <p>Sobre o Jogo</p>
-                <p class="text-sm text-justify">{{ about }}</p>
+                <p class="text-sm text-justify">{{ game.about }}</p>
                 <div class="flex gap-4 mt-2">
-                    {% for categorie in categories %}
+                    {% for categorie in game.categories.all %}
                         <a href="#" class="nes-badge">
                             <span class="is-warning">{{ categorie }}</span>
                         </a>
@@ -41,7 +41,7 @@
 
             <div class="flex flex-col gap-4">
                 <p class="text-sm">Valor:</p>
-                <p class="text-4xl text-amber-300">R$ {{ price }}</p>
+                <p class="text-4xl text-amber-300">R$ {{ game.price|floatformat:"2g" }}</p>
             </div>
 
             <span class="flex gap-4 mt-2 items-center">
@@ -58,18 +58,18 @@
         </div>
 
         <div class="flex flex-col gap-2 mt-4 text-md">
-            <p>Título: {{ title }}</p>
-            <p>Plataforma: {{ platform }}</p>
-            <p>Desenvolvedor: {{ developer }}</p>
-            <p>Distribuidora: {{ publisher }}</p>
-            <p>Lançamento: {{ release_date }}</p>
+            <p>Título: {{ game.title }}</p>
+            <p>Plataforma: {{ game.platform }}</p>
+            <p>Desenvolvedor: {{ game.developer }}</p>
+            <p>Distribuidora: {{ game.publisher }}</p>
+            <p>Lançamento: {{ game.release_date|date:"Y" }}</p>
             <p class="flex flex-col gap-2">
                 <span class="relative">
                     Classificação: 
-                    <span class="{% if rating == 0 %}bg-emerald-400{% elif rating == 10 %}bg-cyan-400{% elif rating == 12 %}bg-yellow-400{% elif rating == 14 %}bg-orange-400{% elif rating == 16 %}bg-red-700{% elif rating == 18 %}bg-black border-gray-300 border-2{% endif %} text-white p-2">{% if rating == 0%}L{% else %}{{ rating }}{% endif %}</span>
+                    <span class="{% if game.rating == 0 %}bg-emerald-400{% elif game.rating == 10 %}bg-cyan-400{% elif game.rating == 12 %}bg-yellow-400{% elif game.rating == 14 %}bg-orange-400{% elif game.rating == 16 %}bg-red-700{% elif game.rating == 18 %}bg-black border-gray-300 border-2{% endif %} text-white p-2">{% if game.rating == 0%}L{% else %}{{ game.rating }}{% endif %}</span>
                     <img class="w-10 absolute left-72 -top-7 -scale-x-100" src="{% static 'gifs/zelda.gif' %}" alt="Zelda"/>
                 </span>
-                <span class="text-xs">*{% if rating == 0 %}Livre{% else %}Não recomendado para menores de {{ rating }} anos{% endif %}</span>
+                <span class="text-xs">*{% if game.rating == 0 %}Livre{% else %}Não recomendado para menores de {{ game.rating }} anos{% endif %}</span>
             </p>
         </div>
     </section>

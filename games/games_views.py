@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Category, Game
 
 
@@ -25,18 +25,10 @@ def games_by_category(request):
 
 
 def game_details(request, slug):
+    game = get_object_or_404(Game, slug=slug)
+    
     context = {
-        'slug': slug,
-        'title': 'Marvel\'s Spider-Man: Miles Morales',
-        'img': 'games/images/4.jpg',
-        'publisher': 'Sony Interactive Entertainment',
-        'developer': 'Insomniac Games, Nixxes Software',
-        'platform': 'PS4, PS5',
-        'rating': 12,
-        'about': 'Na aventura mais recente do universo de Marvel\'s Spider-Man, o adolescente Miles Morales está se adaptando à sua nova casa enquanto segue os passos de seu mentor, Peter Parker, para se tornar um novo Spider-Man. Mas uma violenta disputa de forças ameaça destruir seu novo lar e faz o aspirante a herói perceber que com grandes poderes também vêm grandes responsabilidades. Para salvar a Nova York da Marvel, Miles precisa reconhecer e assumir o título de Spider-Man.',
-        'release_date': 2020,
-        'price': "{:,.2f}".format(170).replace('.', ','),
-        'categories': ['Ação', 'Aventura']
+        'game': game
     }
-
+    
     return render(request, "games/game_details.html", context)

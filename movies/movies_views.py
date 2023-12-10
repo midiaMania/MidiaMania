@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Category, Movie
 
 
@@ -25,17 +25,10 @@ def movies_by_category(request):
 
 
 def movie_details(request, slug):
+    movie = get_object_or_404(Movie, slug=slug)
+    
     context = {
-        'slug': slug,
-        'title': 'Avengers: Endgame',
-        'img': 'movies/images/4.jpg',
-        'directors': 'Anthony Russo e Joe Russo',
-        'rating': 12,
-        'synopsis': 'Após os eventos devastadores de "Vingadores: Guerra Infinita", o universo está em ruínas devido aos esforços do Titã Louco, Thanos. Com a ajuda de aliados remanescentes, os Vingadores devem se reunir mais uma vez a fim de desfazer as ações de Thanos e restaurar a ordem no universo de uma vez por todas, não importando as consequências.',
-        'release_date': 2019,
-        'running_time': 181,
-        'price': "{:,.2f}".format(14).replace('.', ','),
-        'categories': ['Ação', 'Aventura', 'Fantasia']
+        'movie': movie
     }
 
     return render(request, "movies/movie_details.html", context)

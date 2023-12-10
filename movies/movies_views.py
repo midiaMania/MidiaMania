@@ -3,22 +3,8 @@ from .models import Category, Movie
 
 
 def movies_by_category(request):
-    categories = Category.objects.all()
-    movies_by_category = {}
-    for category in categories:
-        movies = category.movie_set.all()
-        movies_list = []
-        for movie in movies:
-            movies_list.append({
-                'name': movie.title,
-                'price': "{:,.2f}".format(movie.price).replace('.', ','),
-                'img': movie.img.url,
-                'slug': movie.slug
-        })
-        movies_by_category[category.name] = movies_list
-
     context = {
-        'movies_by_category': movies_by_category
+        'movies_by_categories': Category.objects.filter(movie__isnull=False).distinct()
     }
     
     return render(request, "movies/movies_by_category.html", context)

@@ -18,7 +18,13 @@
                             <img class="w-full h-full rounded-lg" src="{{ item.img|cut:'frontend'}}" alt="{{ item.title }}" />
                         </div>
                         <p class="text-xl my-1">R$ {{ item.price }}</p>
-                        <a href="{% url 'movie_details' item.slug  %}" class="nes-btn is-primary w-full">VER</a>
+                        {% if item.artist %}
+                            <a href="{% url 'music_details' item.slug %}" class="nes-btn is-primary w-full">VER</a>
+                        {% elif item.about %}
+                            <a href="{% url 'game_details' item.slug %}" class="nes-btn is-primary w-full">VER</a>
+                        {% elif item.synopsis %}
+                            <a href="{% url 'movie_details' item.slug %}" class="nes-btn is-primary w-full">VER</a>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>

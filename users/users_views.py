@@ -142,7 +142,15 @@ def signup(request):
     return render(request, "users/signup.html")
 
 def checkout(request):
-    return render(request, "users/checkout.html")
+    if request.user.is_authenticated:
+        cart_items = ShoppingCartItem.objects.filter(user=request.user, purchase_date__isnull=True)
+        context = {
+            'items': cart_items,
+            'total': sum(item.product_price for item in cart_items)
+        }
+        return render(request, "users/checkout.html", context)
+    return redirect('login')
+    
 
 def cart(request):
      if request.user.is_authenticated:

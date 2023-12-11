@@ -105,11 +105,35 @@
             </div>
         </div>
 
-        <div class="nes-container is-dark with-title is-rounded flex-1">
+        <div class="nes-container is-dark with-title is-rounded flex-auto">
             <p class="title">PRODUTOS</p>
-            <div class="px-2 pb-2 w-full">
-                <p class="text-sm">SUBTOTAL</p>
-                <p>TOTAL</p>
+            <div class="flex flex-col h-full">
+                <div class="flex-1 flex flex-col gap-2">
+                    {% for item in items %}
+                        <div class="flex justify-between gap-4">
+                            <div>{{item.product_name}}</div>
+                            <div>{{item.product_price}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="py-10 w-full">
+                    <div class="flex justify-between text-sm gap-4">
+                        <div>SUBTOTAL</div>
+                        <div>{{ total }}</div>
+                    </div>
+                    <div class="flex justify-between text-sm gap-4">
+                        <div>CUPOM</div>
+                        <div>- 0,00</div>
+                    </div>
+                    <div class="flex justify-between text-sm gap-4">
+                        <div>VALE-PRESENTE</div>
+                        <div>- 0,00</div>
+                    </div>
+                    <div class="flex justify-between gap-4 mt-2">
+                        <div>TOTAL</div>
+                        <div>R$ {{ total }}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -137,6 +161,16 @@
         <button id="next" class="nes-btn">PAGAMENTO &gt;</button>
     </div>
 
+    <dialog class="nes-dialog is-dark is-rounded" id="checkout">
+        <div class="dialog is-centered">
+            <p class="title text-center py-2">Deseja finalizar o pedido?</p>
+            <menu class="dialog-menu flex mt-4">
+                <button onclick="hiddenConfirmation()" class="nes-btn is-error mx-auto">Não</button>
+                <button onclick="showFinalized()" class="nes-btn is-primary mx-auto">Sim</button>
+            </menu>
+        </div>
+    </dialog>
+
     <script>
         let state = false;
 
@@ -161,7 +195,7 @@
 
         next.addEventListener("click", () => {
             if(state) {
-                showFinalized();
+                showConfirmation();
             } else {
                 showPayment()
             }
@@ -203,6 +237,8 @@
         }
 
         function showFinalized() {
+            hiddenConfirmation();
+
             btns.classList.add("hidden");
 
             paymentIcon.classList.remove("bg-cyan-400");
@@ -217,6 +253,20 @@
             finalized.classList.remove("hidden");
             finalized.classList.add("flex");
         }
+
+        function showConfirmation() {
+            document.getElementById('checkout').showModal();
+        }
+
+        function hiddenConfirmation() {
+            document.getElementById('checkout').close();
+            state = !state;
+        }
+
+        function checkout() {
+            
+        }
+
     </script>
 
 {% endblock %}

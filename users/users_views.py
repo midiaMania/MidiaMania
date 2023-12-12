@@ -9,39 +9,27 @@ from .models import ShoppingCartItem
 from movies.models import Movie
 from musics.models import Music
 from games.models import Game
+from datetime import date
+from django.http import HttpResponse
 
 class My_profile(View):
-    context= {
-        'phone_number': "(99) 9 9999-9999",
-        'shopping':[
-            {
-                'type':'Música',
-                'name': "The Beatles",
-                'price': "{:,.2f}".format(5).replace('.', ','),
-                'img': "musics/images/2.jpg",
-                'date': '13/04/2020'
-            },
-            {
-                'type': 'Filme',
-                'name': "MIB",
-                'price': "{:,.2f}".format(14).replace('.', ','),
-                'img': "movies/images/2.jpg",
-                'date': '13/04/2020'
-            },
-            {
-                'type':'Jogo',
-                'name': "Watch Dogs",
-                'price': "{:,.2f}".format(40).replace('.', ','),
-                'img': "games/images/3.jpg",
-                'date': '13/04/2020'
-            },
-        ]
-    }
-
     def get(self, request):
         if request.user.is_authenticated:
+            cart_items = ShoppingCartItem.objects.filter(user=request.user, purchase_date__isnull=False)
+            context = {
+                'shopping': [
+                    {
+                        'type': item.product_type,
+                        'name': item.product_name,
+                        'price': "{:,.2f}".format(item.product_price).replace('.', ','),
+                        'img': item.product_image.url,
+                        'date': item.purchase_date,
+                    }
+                    for item in cart_items
+                ]
+            }
             return render(request, "users/my_profile.html", {
-                'data': self.context,
+                'data': context,
                 'user': request.user
             })
         else:
@@ -53,7 +41,6 @@ class My_profile(View):
         new_name = request.POST.get('name')
         new_username = request.POST.get('username')
         new_email = request.POST.get('email')
-        new_phone_number = request.POST.get('phone_number')
         new_password = request.POST.get('password')
 
         if new_name != '':
@@ -148,6 +135,12 @@ def checkout(request):
             'items': cart_items,
             'total': sum(item.product_price for item in cart_items)
         }
+        if request.method == 'POST':
+            current_date = date.today()
+            for item in cart_items:
+                item.purchase_date = current_date
+                item.save()
+            return HttpResponse(status=204)
         return render(request, "users/checkout.html", context)
     return redirect('login')
     
@@ -180,6 +173,7 @@ def cart(request):
      
 def add_movie_to_cart(request, slug):
     if request.user.is_authenticated:
+        action = request.GET.get('action')
         movie = get_object_or_404(Movie, slug=slug)
         cart_item = ShoppingCartItem.objects.create(
             user=request.user,
@@ -191,11 +185,15 @@ def add_movie_to_cart(request, slug):
     else:
         request.session['cart_redirect'] = reverse('add_movie_to_cart', args=[slug])
         return redirect('login')
+    if action == '1':
+        return redirect('cart')
+    else:
+        return redirect('movie_details', slug=slug)
 
-    return redirect('movie_details', slug=slug)
 
 def add_music_to_cart(request, slug):
     if request.user.is_authenticated:
+        action = request.GET.get('action')
         music = get_object_or_404(Music, slug=slug)
         cart_item = ShoppingCartItem.objects.create(
             user=request.user,
@@ -207,11 +205,14 @@ def add_music_to_cart(request, slug):
     else:
         request.session['cart_redirect'] = reverse('add_music_to_cart', args=[slug])
         return redirect('login')
-
-    return redirect('music_details', slug=slug)
+    if action == '1':
+        return redirect('cart')
+    else:
+        return redirect('movie_details', slug=slug)
 
 def add_game_to_cart(request, slug):
     if request.user.is_authenticated:
+        action = request.GET.get('action')
         game = get_object_or_404(Game, slug=slug)
         cart_item = ShoppingCartItem.objects.create(
             user=request.user,
@@ -223,5 +224,7 @@ def add_game_to_cart(request, slug):
     else:
         request.session['cart_redirect'] = reverse('add_game_to_cart', args=[slug])
         return redirect('login')
-
-    return redirect('game_details', slug=slug)
+    if action == '1':
+        return redirect('cart')
+    else:
+        return redirect('movie_details', slug=slug)

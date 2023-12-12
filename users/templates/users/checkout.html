@@ -165,8 +165,11 @@
         <div class="dialog is-centered">
             <p class="title text-center py-2">Deseja finalizar o pedido?</p>
             <menu class="dialog-menu flex mt-4">
-                <button onclick="hiddenConfirmation()" class="nes-btn is-error mx-auto">Não</button>
-                <button onclick="showFinalized()" class="nes-btn is-primary mx-auto">Sim</button>
+                <form method="post" action="{% url 'checkout' %}">
+                {% csrf_token %}
+                    <button onclick="hiddenConfirmation()" class="nes-btn is-error mx-auto">Não</button>
+                    <button type="submit" onclick="showFinalized()" class="nes-btn is-primary mx-auto">Sim</button>
+                </forms>
             </menu>
         </div>
     </dialog>

@@ -13,4 +13,5 @@ urlpatterns = [
     path("movies/<slug:slug>/add_to_cart/",users_views.add_movie_to_cart, name="add_movie_to_cart"),
     path("musics/<slug:slug>/add_to_cart/",users_views.add_music_to_cart, name="add_music_to_cart"),
     path("games/<slug:slug>/add_to_cart/",users_views.add_game_to_cart, name="add_game_to_cart"),
+    
 ]
